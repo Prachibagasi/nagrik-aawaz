@@ -1,0 +1,6 @@
+# Voice deps are included in requirements/development.txt
+# Re-run only if voice was installed without Whisper:
+#   pip install -r requirements-voice.txt
+
+openai-whisper>=20231117
+imageio-ffmpeg>=0.4.9

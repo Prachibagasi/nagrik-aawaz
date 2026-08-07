@@ -1,0 +1,4 @@
+complaint_id,user_name,voice_transcript,latitude,longitude,timestamp,status
+1,Amit Kumar,Road broken near clock tower,30.3165,78.0322,2026-06-02 10:00:00,Pending
+2,Suman Singh,Water leakage in main pipe,30.3254,78.0413,2026-06-02 11:30:00,In Progress
+3,Pradeep Negi,Street light not working,30.3312,78.0567,2026-06-02 12:15:00,Resolved

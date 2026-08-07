@@ -1,0 +1,564 @@
+.horizontal_1{
+    background-color:rgb(10, 102, 171);
+    height:40px;
+    display: flex; /* Dono vertical divs ko side-by-side lane ke liye */
+    width: 100%;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    height: 50px; /* Aap height apne hisaab se adjust kar sakte hain */
+    align-items: center;
+    gap:20px;
+}
+.new{
+    background-color:red;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-family:Helvetica,Arial, sans-serif;
+    display: inline;
+}
+.para {
+  display: inline; 
+  margin: 0;
+  font-family:Helvetica,Arial, sans-serif;
+  color:white;
+}
+.link{
+    display: inline;
+    color:white;
+    font-weight: bold;
+}
+
+.h1_vertical_1 {
+  width: 70%;
+  overflow: hidden; /* This hides the text when it's "outside" */
+  border: 1px solid #ddd;
+  white-space: nowrap; /* Prevents the text from wrapping to a second line */
+  padding: 10px 0;
+  border: none;
+}
+.scrolling-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px; /* Space between Button, Text, and Link */
+  padding-left: 100%;/* Start the animation from the far right*/
+  animation: marquee-scroll 30s linear infinite;
+}
+/* The Animation Logic */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Optional: Pause on hover so people can click the link! */
+.h1_vertical_1:hover .scrolling-content {
+  animation-play-state: paused;
+}
+
+/* This targets any class starting with 'msg_delay' */
+
+/* 1. Parent Container ko Flex banayein taaki horizontal rahein */
+/* Parent container ko relative banaiye taaki bache iske andar stack ho sakein */
+.h1_vertical_2 {
+    width: 30%;
+    height: 100%; /* Parent ki puri height le */
+    position: relative; /* Zaroori: taaki absolute bache isi ke upar rahein */
+    display: flex;
+    justify-content: center; /* Text ko beech mein rakhne ke liye */
+    align-items: center;
+    overflow: hidden;
+    font-family:Helvetica,Arial, sans-serif;
+   
+}
+
+/* Sabhi messages ko ek hi jagah par stack karne ke liye */
+[class^="msg_delay"] {
+    position: absolute; /* Sabse important: Teeno ek hi position pe aa jayenge */
+    opacity: 0;         /* Shuru mein sab gayab */
+    white-space: nowrap;
+    color: white;
+    font-size: 18px;
+    /* Animation: Name | Total Duration | Timing | Infinite Loop */
+    animation: slideInOut 9s linear infinite; 
+}
+
+/* --- Animation Timing Logic --- 
+   Total 9 seconds ka loop hai (3 messages x 3 seconds each)
+*/
+
+/* Pehla message: 0s se 3s tak dikhega */
+.msg_delay-1 {
+    animation-delay: 0s;
+}
+
+/* Dusra message: 3s baad shuru hoga */
+.msg_delay-2 {
+    animation-delay: 3s;
+}
+
+/* Tisra message: 6s baad shuru hoga */
+.msg_delay-3 {
+    animation-delay: 6s;
+}
+
+/* Animation Keyframes: Fade In -> Stay -> Fade Out */
+@keyframes slideInOut {
+    0% { opacity: 0; transform: translateY(10px); }  /* Start: Gayab aur thoda niche */
+    5% { opacity: 1; transform: translateY(0); }     /* 0.4s mein dikhne lagega */
+    30% { opacity: 1; transform: translateY(0); }    /* 3s tak dikhta rahega */
+    35% { opacity: 0; transform: translateY(-10px); } /* Gayab hote waqt upar jayega */
+    100% { opacity: 0; }                             /* Baaki time gayab rahega */
+}
+/* =============================================
+   HORIZONTAL_2: Main navbar container
+   flex + align-items:center se logo aur links
+   ek hi line mein aate hain (horizontal layout)
+   ============================================= */
+.horizontal_2 {
+  display: flex;              /* Flex layout enable kiya - children horizontal hote hain */
+  align-items: center;        /* Logo aur links vertically center hote hain */
+  justify-content: space-between; /* Logo left mein, nav links right mein jaate hain */
+  padding: 10px 20px;         /* Upar-neeche aur left-right spacing */
+  background-color: white;    /* White background */
+  border-bottom: 1px solid #ddd; /* Neeche halki line */
+}
+
+/* =============================================
+   H2_VERTICAL_1: Logo container (left side)
+   inline-block se logo apni jagah leta hai
+   aur flex ke saath ache se align hota hai
+   ============================================= */
+.h2_vertical_1 {
+  display: flex;              /* flex se logo theek se center hoga */
+  align-items: center;        /* Logo vertically center */
+  flex-shrink: 0;             /* Logo resize na ho jab screen choti ho */
+}
+
+/* =============================================
+   LOGO: Logo image fix
+   height set karo toh logo sahi size mein aayega
+   width: auto se aspect ratio maintain hoga
+   ============================================= */
+.logo {
+  height: 120px;               /* Logo ki height fix ki - pehle auto tha, isliye collapse ho raha tha */
+  width: auto;                /* Aspect ratio maintain karo */
+}
+
+/* =============================================
+   H2_VERTICAL_2: Navigation links container (right side)
+   flex se saare links ek line mein aate hain
+   gap se links ke beech spacing aata hai
+   ============================================= */
+.h2_vertical_2 {
+  display: flex;              /* flex lagaya - pehle inline tha, isliye items wrap ho rahe the */
+  align-items: center;        /* Saare items vertically center */
+  gap: 20px;                  /* Har link ke beech 20px ki doori */
+  flex-wrap: nowrap;      
+  font-family:Helvetica,Arial, sans-serif;    /* Links ek hi line mein rahein, wrap na hon */
+}
+
+/* =============================================
+   HOME: Home icon/text
+   ============================================= */
+.home {
+  font-size: 14px;            /* Ghar ka icon thoda bada */
+  cursor: pointer;
+  color: #333;
+  white-space: nowrap;
+  font-family:Helvetica,Arial, sans-serif;
+}
+
+/* =============================================
+   DROPDOWN: Nav links (New Connection, Payment etc.)
+   display:inline se display:flex (ya block) kiya
+   white-space:nowrap se text ek line mein rahega
+   ============================================= */
+.dropdown {
+  font-size: 14px;
+  font-weight: 500;
+ font-family:Helvetica,Arial, sans-serif;
+  color: #333;
+  cursor: pointer;
+  white-space: nowrap;        /* Text wrap nahi hoga */
+  display: block;             /* inline se block - flex container mein theek kaam karta hai */
+}
+
+.dropdown:hover {
+  color: #0a66ab;             /* Hover pe blue color */
+}
+
+/* =============================================
+   LOGIN BUTTON: SignIn/SignUp button
+   display:inline hataya - flex container ke
+   andar yeh automatically sahi align ho jaata hai
+   ============================================= */
+.login {
+  background-color: rgb(10, 102, 171);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;  /* sirf background transition, pehle 0.3 tha jo incomplete tha */
+  white-space: nowrap;                /* Button text ek line mein rahe */
+  flex-shrink: 0;                     /* Button squeeze na ho */
+}
+
+.login:hover {
+  background-color: #005a96;
+}
+
+
+/* =============================================
+   PARENT CONTAINER
+   Dono boxes ko side by side rakhta hai
+   ============================================= */
+.h3_horizontal_1 {
+  display: flex;
+  gap: 30px;                  /* Dono boxes ke beech gap */
+  height: 500px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 30px;            /* Side padding */
+}
+
+/* =============================================
+   LEFT BOX — Notice/Announcement wala
+   ============================================= */
+.h3_h1_vertical_1 {
+  flex: 1;                    /* Dono equal size lenge */
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;        /* Sabhi corners rounded */
+  padding: 10px 16px;
+  overflow: hidden;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+.h3_h1_vertical_1:hover ul {
+  animation-play-state: paused;
+}
+/* List styling */
+.h3_h1_vertical_1 ul {
+  list-style-type: disc;
+  padding-left: 18px;
+  margin: 0;
+  animation: scrollUp 12s linear infinite;  /* infinite scroll */
+}
+
+.h3_h1_vertical_1 ul li {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 8px;    
+  font-family:Helvetica,Arial, sans-serif;     /* Har bullet ke beech thodi doori */
+}
+
+/* Red clickable links */
+.h3_h1_vertical_1 ul li a {
+  color: #cc0000;             /* Red color — image jaisa */
+  font-weight: 600;
+  text-decoration: none;
+
+}
+
+.h3_h1_vertical_1 ul li a:hover {
+  text-decoration: underline;
+  font-family:Helvetica,Arial, sans-serif;
+}
+@keyframes scrollUp {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }  /* -50% kyunki list duplicate hai */
+}
+/* =============================================
+   RIGHT BOX — WhatsApp registration wala
+   Dark blue gradient background
+   ============================================= */
+.h3_h1_vertical_2 {
+  flex: 1;                    /* flex: 1 — width: 500px hata do */
+  flex-shrink: 0;
+  background-image: url('images/whatsAppRegister.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 12px;        /* Sabhi corners rounded */
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* =============================================
+   RIGHT BOX KE ANDAR KI STYLING
+   ============================================= */
+
+/*
+/* WhatsApp green bubble 
+.wp-bubble {
+  background-color: #25D366;  /* WhatsApp green 
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  position: absolute;
+  left: 120px;                /* Phone ke upar overlap 
+  top: 30px;
+}*/
+.wp-left {
+    height: 100%;       /* Parent div ki poori unchai */
+    width: 150px;       /* Aap apne hisaab se width set karein jitni image dikhani hai */
+    
+    /* Background properties */
+    background-image: url('images/whatsAppRegister.jpg'); 
+    background-size: cover;      /* Isse image poore div ko fill kar degi bina stretch huye */
+    background-position: center;  /* Image ka center hissa dikhega */
+    background-repeat: no-repeat; /* Image repeat nahi hogi */
+    
+    flex-shrink: 0;               /* Taaki div chota na ho jaye */
+}
+
+/* Purani .wp-phone styling ki ab zaroorat nahi hai toh use hata sakte hain */
+
+.wp-phone {
+  height: 100%;
+  width: auto;
+}
+
+/* Register button */
+.wp-btn {
+  background-color: #1565c0;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 8px;
+  width: 100%;
+  font-family:Helvetica,Arial, sans-serif;
+}
+
+.wp-btn:hover {
+  background-color: #0d47a1;
+}
+
+.h3_horizontal_2 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 16px 12px;
+    box-sizing: border-box;
+    background-color:rgba(255,255,255,0.3);
+    height: 160px;
+}
+
+.icon-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #f5c842;   /* Yellow circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.icon-box:hover .icon-circle {
+    transform: scale(1.08);      /* Hover pe thoda bada */
+}
+
+.icon-label {
+    font-size: 13px;
+    font-weight: bold;
+    color: black;
+    margin: 0;
+    text-align: center;
+    font-family:Helvetica,Arial, sans-serif;
+}
+
+.icon-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.horizontal_3 {
+    background-image: url('power-image-5-1024x536.jpg');
+    background-size: cover;        /* Image poore div ko fill kare */
+    background-position: center;   /* Image center se dikhaye */
+    background-repeat: no-repeat;  /* Image repeat na ho */
+     display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.horizontal_4{
+  background-color:#0a66ab;
+  margin-top:0px;
+  margin-bottom:0px;
+  height:200px;
+}
+.para_4{
+  color:white;
+  margin-top:0px;
+  margin-bottom:0px;
+  font-family:Helvetica,Arial, sans-serif;
+  font-weight:bold;
+}
+.text1{
+  /* display:flex; */
+  height:50px;
+  padding-top:40px;
+  font-size:18px;
+  text-align: center;
+  justify-content:center;
+}
+.text2{
+  height:30px;
+  padding-top:5px;
+  justify-content:center;
+  text-align: center;
+  font-size:15px;
+}
+.text3{
+  height:20px;
+  padding-top:5px;
+  justify-content:center;
+  text-align: center;
+  font-size:11px;
+}
+
+
+
+
+/* =============================================
+   RESPONSIVE — Mobile & Tablet
+   ============================================= */
+
+/* Tablet (768px se chhota) */
+@media (max-width: 768px) {
+
+  /* Header strip */
+  .horizontal_1 {
+    flex-direction: column;
+    height: auto;
+    padding: 8px;
+    gap: 8px;
+  }
+  .h1_vertical_1, .h1_vertical_2 {
+    width: 100%;
+  }
+
+  /* Navbar */
+  .horizontal_2 {
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
+  }
+  .h2_vertical_2 {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .logo {
+    height: 70px;
+  }
+
+  /* Section 3 — notice + whatsapp */
+  .h3_horizontal_1 {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+    gap: 15px;
+  }
+  .h3_h1_vertical_1, .h3_h1_vertical_2 {
+    height: 200px;
+    width: 100%;
+  }
+
+  /* Icons row */
+  .h3_horizontal_2 {
+    flex-wrap: wrap;
+    height: auto;
+    gap: 16px;
+    padding: 20px;
+  }
+  .icon-box {
+    width: calc(33% - 16px);  /* 3 icons per row on tablet */
+  }
+
+  /* Footer */
+  .horizontal_4 {
+    height: auto;
+    padding: 20px 10px;
+  }
+}
+
+/* Mobile (480px se chhota) */
+@media (max-width: 480px) {
+
+  /* Navbar — hamburger ke liye */
+  .h2_vertical_2 {
+    display: none;            /* JS se toggle hoga */
+    flex-direction: column;
+    width: 100%;
+    background: white;
+    padding: 10px 0;
+  }
+  .h2_vertical_2.open {
+    display: flex;            /* JS menu open hone par */
+  }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 5px;
+  }
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    border-radius: 3px;
+    transition: 0.3s;
+  }
+
+  /* Icons — 2 per row on mobile */
+  .icon-box {
+    width: calc(50% - 16px);
+  }
+
+  .logo {
+    height: 55px;
+  }
+
+  .dropdown, .home {
+    font-size: 16px;
+    padding: 8px 20px;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+  }
+}

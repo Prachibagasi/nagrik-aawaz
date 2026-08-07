@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Department of School Education, Uttarakhand | Empowering Futures Through Education</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style_shiksha.css">
+</head>
+<body>
+
+<!-- ===== TOP UTILITY BAR ===== -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <a href="#" class="skip-link">Skip to Main Content</a>
+    <span class="divider">|</span>
+    <a href="#">Screen Reader</a>
+    <span class="divider">|</span>
+    <a href="#">Accessibility</a>
+    <span class="divider">|</span>
+    <a href="#" class="hindi-link">हिन्दी</a>
+  </div>
+  <div class="top-bar-right">
+    <a href="http://uk.gov.in/" target="_blank">उत्तराखण्ड शासन</a>
+    <span class="divider">|</span>
+    <a href="http://uk.gov.in/" target="_blank">Uttarakhand Gov</a>
+  </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-emblem">
+        <div class="emblem-ring">
+          <span class="emblem-text">UK</span>
+        </div>
+      </div>
+      <div class="header-titles">
+        <div class="hindi-title">विद्यालयी शिक्षा विभाग, उत्तराखंड</div>
+        <h1 class="dept-name">Department of School Education</h1>
+        <div class="dept-tagline">Empowering Uttarakhand's Future Through Education</div>
+      </div>
+    </div>
+    <div class="header-badges">
+      <div class="badge-pill">
+        <span class="badge-dot green"></span>Education Portal
+      </div>
+      <div class="badge-pill">
+        <span class="badge-dot blue"></span>Digital India
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="mainNav">
+  <div class="nav-inner">
+    <ul class="nav-list">
+      <li><a href="#" class="nav-link active">Home</a></li>
+
+      <li class="has-dropdown">
+        <a href="#" class="nav-link">About Department <span class="arrow">▾</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">School Structure</a></li>
+          <li><a href="#">Administrative Structure</a></li>
+          <li><a href="#">Functions & Responsibilities</a></li>
+          <li><a href="#">Vision & Mission</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#" class="nav-link">Directory <span class="arrow">▾</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Department Officers</a></li>
+          <li><a href="#">District Education Officers</a></li>
+          <li><a href="#">School Principals</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#" class="nav-link">Documents <span class="arrow">▾</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Government Orders</a></li>
+          <li><a href="#">ACR Forms</a></li>
+          <li><a href="#">RTI Manuals</a></li>
+          <li><a href="#">Seniority Lists</a></li>
+          <li><a href="#">Service Manual & Acts</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#" class="nav-link">Notices <span class="arrow">▾</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Announcements</a></li>
+          <li><a href="#">Tenders</a></li>
+          <li><a href="#">Recruitment</a></li>
+          <li><a href="#">Examination</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#" class="nav-link">Awards <span class="arrow">▾</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">CSI Award 2022</a></li>
+          <li><a href="#">SKOCH Award 2021</a></li>
+          <li><a href="#">eGovernance Awards</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown">
+        <a href="#" class="nav-link">RTI <span class="arrow">▾</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">RTI Act 2005</a></li>
+          <li><a href="#">Public Information Officer</a></li>
+          <li><a href="#">RTI Applications</a></li>
+        </ul>
+      </li>
+
+      <!-- COMPLAINTS — opens dashboard -->
+      <li class="complaints-nav-item">
+        <button class="nav-link complaints-btn" onclick="openComplaintDashboard()">
+          ⚡ Complaints / Requests
+        </button>
+      </li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== NEWS TICKER ===== -->
+<div class="ticker-bar">
+  <span class="ticker-label">📢 Latest</span>
+  <div class="ticker-track">
+    <div class="ticker-content">
+       New Academic Session 2025-26 begins from April 1 &nbsp;|&nbsp;
+       Teacher Transfer Applications open — last date April 30 &nbsp;|&nbsp;
+       Uttarakhand wins National Education Excellence Award 2025 &nbsp;|&nbsp;
+       Mid-Day Meal Scheme expanded to 16,000 schools across state &nbsp;|&nbsp;
+       UBSE Board Exam results declared — check official portal &nbsp;|&nbsp;
+       Hackathon: Innovate Uttarakhand registration open for students &nbsp;|&nbsp;
+       New Academic Session 2025-26 begins from April 1 &nbsp;|&nbsp;
+       Teacher Transfer Applications open — last date April 30 &nbsp;|&nbsp;
+       Uttarakhand wins National Education Excellence Award 2025 &nbsp;|&nbsp;
+       Mid-Day Meal Scheme expanded to 16,000 schools across state
+    </div>
+  </div>
+</div>
+
+<!-- ===== HERO IMAGE SLIDER ===== -->
+<section class="hero-slider" id="heroSlider">
+  <div class="slides-container" id="slidesContainer">
+
+          <div class="slide active" style="
+        background-image: url('images/shiksha_1.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      ">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Education Initiative</div>
+        <h2>Empowering Every Child in Uttarakhand</h2>
+        <p>Quality education reaching 1.6 million students across 16,793 schools in the hills and plains</p>
+        <a href="#" class="slide-cta">Learn More →</a>
+      </div>
+      <div class="slide-illustration">
+        <div class="slide-icon-group">
+          <div class="si-circle c1">📚</div>
+          <div class="si-circle c2">🏫</div>
+          <div class="si-circle c3">🎓</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide active" style="
+        background-image: url('images/shiksha_2.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      ">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Digital Education</div>
+        <h2>PM eVidya — Bringing Learning to Every Home</h2>
+        <p>Bridging the digital divide through technology, television, radio and online platforms for all students</p>
+        <a href="#" class="slide-cta">Explore Portal →</a>
+      </div>
+      <div class="slide-illustration">
+        <div class="slide-icon-group">
+          <div class="si-circle c1">💻</div>
+          <div class="si-circle c2">📡</div>
+          <div class="si-circle c3">📱</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide active" style="
+        background-image: url('images/shiksha_3.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      ">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Innovation</div>
+        <h2>SCERT Hackathon: Innovate Uttarakhand 2025</h2>
+        <p>Students showcase cutting-edge solutions for education challenges at the state's premier innovation event</p>
+        <a href="#" class="slide-cta">Register Now →</a>
+      </div>
+      <div class="slide-illustration">
+        <div class="slide-icon-group">
+          <div class="si-circle c1">🚀</div>
+          <div class="si-circle c2">💡</div>
+          <div class="si-circle c3">🏆</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide active" style="
+        background-image: url('images/shiksha_4.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      ">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Mid-Day Meal Scheme</div>
+        <h2>Nourishing Minds, Building Futures</h2>
+        <p>Nutritious meals for 1.2 million students daily, ensuring no child studies on an empty stomach</p>
+        <a href="#" class="slide-cta">View Details →</a>
+      </div>
+      <div class="slide-illustration">
+        <div class="slide-icon-group">
+          <div class="si-circle c1">🍱</div>
+          <div class="si-circle c2">👦</div>
+          <div class="si-circle c3">🌱</div>
+        </div>
+      </div>
+    </div>
+
+   <div class="slide active" style="
+        background-image: url('images/shiksha_5.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      ">
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">Teacher Excellence</div>
+        <h2>Honouring Our Dedicated Educators</h2>
+        <p>State Teacher Awards recognizing outstanding contribution to quality education across Uttarakhand</p>
+        <a href="#" class="slide-cta">View Awards →</a>
+      </div>
+      <div class="slide-illustration">
+        <div class="slide-icon-group">
+          <div class="si-circle c1">⭐</div>
+          <div class="si-circle c2">👩‍🏫</div>
+          <div class="si-circle c3">🎖️</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Slider Controls -->
+  <button class="slider-btn prev" id="sliderPrev" onclick="moveSlider(-1)">&#8249;</button>
+  <button class="slider-btn next" id="sliderNext" onclick="moveSlider(1)">&#8250;</button>
+
+  <!-- Dots -->
+  <div class="slider-dots" id="sliderDots">
+    <button class="dot active" onclick="goToSlide(0)"></button>
+    <button class="dot" onclick="goToSlide(1)"></button>
+    <button class="dot" onclick="goToSlide(2)"></button>
+    <button class="dot" onclick="goToSlide(3)"></button>
+    <button class="dot" onclick="goToSlide(4)"></button>
+  </div>
+</section>
+
+<!-- ===== QUICK STATS ===== -->
+<section class="quick-stats">
+  <div class="stat-item">
+    <div class="stat-num">16,793</div>
+    <div class="stat-lbl">Government Schools</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num">1.6M+</div>
+    <div class="stat-lbl">Students Enrolled</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num">82,000+</div>
+    <div class="stat-lbl">Teaching Staff</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num">13</div>
+    <div class="stat-lbl">Districts Covered</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num">97.2%</div>
+    <div class="stat-lbl">Enrolment Rate</div>
+  </div>
+</section>
+
+<!-- ===== MAIN CONTENT AREA ===== -->
+<div class="main-content-wrap">
+
+  <!-- LEFT: About + CM + Activities -->
+  <main class="main-col">
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section content-card">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">Department of School Education, Uttarakhand</h2>
+      <div class="about-body">
+        <div class="about-text">
+          <p>The state of Uttarakhand was carved out of Uttar Pradesh on November 9, 2000. Uttarakhand was a centre of education from ancient times — it was believed that the Kauravas and Pandavas were trained by Guru Dronacharya in the foothills of the Himalayas, which is why Dehradun is also known as <em>Drona Nagari</em>.</p>
+          <p>India's best schools and training institutes are located in Uttarakhand. The Department of Education has a unified structure covering basic education, secondary education, SCERT, Uttarakhand Board of School Education — all working under the Directorate of School Education.</p>
+          <a href="#" class="read-more-link">Read More <span>→</span></a>
+        </div>
+        <div class="about-visual">
+          <div class="about-icon-grid">
+            <div class="about-icon-box">
+              <span class="aib-icon">🏔️</span>
+              <span class="aib-label">Mountain Schools</span>
+            </div>
+            <div class="about-icon-box">
+              <span class="aib-icon">📖</span>
+              <span class="aib-label">Curriculum Dev.</span>
+            </div>
+            <div class="about-icon-box">
+              <span class="aib-icon">🎯</span>
+              <span class="aib-label">NEP 2020</span>
+            </div>
+            <div class="about-icon-box">
+              <span class="aib-icon">🌐</span>
+              <span class="aib-label">Digital Learn</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CM SECTION -->
+    <section class="cm-section content-card">
+      <div class="cm-inner">
+        <div class="cm-photo-wrap">
+          <div class="cm-photo-placeholder">
+            <span class="cm-icon"><img src="images/cm.jpg" alt="Chief Minister"></span>
+          </div>
+          <div class="cm-ribbon">Chief Minister</div>
+        </div>
+        <div class="cm-details">
+          <div class="section-label">Message from</div>
+          <h2 class="cm-name">Shri Pushkar Singh Dhami</h2>
+          <p class="cm-title">Honourable Chief Minister, Uttarakhand</p>
+          <p class="cm-message">"Education is the most powerful weapon we can use to change Uttarakhand's future. Our commitment to providing quality, accessible, and modern education to every child — whether in the plains of Haridwar or the peaks of Pithoragarh — remains unwavering."</p>
+          <div class="cm-actions">
+            <a href="#" class="btn-outline-blue">CM Helpline</a>
+            <a href="#" class="btn-outline-blue">CM Portal</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPARTMENTAL ACTIVITIES — horizontal scroll cards -->
+    <section class="activities-section">
+      <div class="section-header-row">
+        <div>
+          <div class="section-label">What's New</div>
+          <h2 class="section-title">New Departmental Activities</h2>
+        </div>
+        <div class="scroll-controls">
+          <button class="scroll-ctrl-btn" id="actPrev" onclick="scrollCards('activities-track', -1)">‹</button>
+          <button class="scroll-ctrl-btn" id="actNext" onclick="scrollCards('activities-track', 1)">›</button>
+        </div>
+      </div>
+      <div class="cards-scroll-container">
+        <div class="cards-track" id="activities-track">
+
+          <div class="activity-card">
+            <div class="ac-img" style="background: linear-gradient(135deg,#1a5276,#0d3b2e);">
+              <span class="ac-emoji">🏛️</span>
+            </div>
+            <div class="ac-body">
+              <span class="ac-tag">Merger</span>
+              <h3>National Secondary Education Campaign merged into Uttarakhand Education Council</h3>
+              <p>Streamlining education administration for better service delivery to all schools.</p>
+              <a href="#" class="ac-link">Read More →</a>
+            </div>
+          </div>
+
+          <div class="activity-card">
+            <div class="ac-img" style="background: linear-gradient(135deg,#154360,#c17817);">
+              <span class="ac-emoji">📺</span>
+            </div>
+            <div class="ac-body">
+              <span class="ac-tag">Digital Learning</span>
+              <h3>PM eVidya Time Schedule Released for Uttarakhand Students</h3>
+              <p>Access quality content through dedicated TV channels and online platforms.</p>
+              <a href="#" class="ac-link">View Schedule →</a>
+            </div>
+          </div>
+
+          <div class="activity-card">
+            <div class="ac-img" style="background: linear-gradient(135deg,#2e4057,#8e44ad);">
+              <span class="ac-emoji">💡</span>
+            </div>
+            <div class="ac-body">
+              <span class="ac-tag">Innovation</span>
+              <h3>SCERT Uttarakhand "Hackathon: INNOVATE Uttarakhand"</h3>
+              <p>Students compete to design innovative solutions for real-world education problems.</p>
+              <a href="#" class="ac-link">Register Now →</a>
+            </div>
+          </div>
+
+          <div class="activity-card">
+            <div class="ac-img" style="background: linear-gradient(135deg,#1b4332,#2874a6);">
+              <span class="ac-emoji">🎨</span>
+            </div>
+            <div class="ac-body">
+              <span class="ac-tag">e-Content</span>
+              <h3>Unlock Innovation, Ignite Ideas! Design Thinking Workshop</h3>
+              <p>Teachers and students collaborate to create engaging digital learning content.</p>
+              <a href="#" class="ac-link">Learn More →</a>
+            </div>
+          </div>
+
+          <div class="activity-card">
+            <div class="ac-img" style="background: linear-gradient(135deg,#4a235a,#1a5276);">
+              <span class="ac-emoji">📊</span>
+            </div>
+            <div class="ac-body">
+              <span class="ac-tag">Report</span>
+              <h3>Annual Report 2024-25 on Elementary Education Released</h3>
+              <p>Comprehensive data on enrolment, infrastructure, and learning outcomes statewide.</p>
+              <a href="#" class="ac-link">Download →</a>
+            </div>
+          </div>
+
+          <div class="activity-card">
+            <div class="ac-img" style="background: linear-gradient(135deg,#0d3b2e,#922b21);">
+              <span class="ac-emoji">🏅</span>
+            </div>
+            <div class="ac-body">
+              <span class="ac-tag">Awards</span>
+              <h3>State Teacher Award 2025 Nominations Open</h3>
+              <p>Recognize outstanding educators shaping the future of Uttarakhand's children.</p>
+              <a href="#" class="ac-link">Nominate →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- AWARDS SECTION — horizontal scroll -->
+    <section class="activities-section">
+      <div class="section-header-row">
+        <div>
+          <div class="section-label">Recognition</div>
+          <h2 class="section-title">Departmental Technical Awards</h2>
+        </div>
+        <div class="scroll-controls">
+          <button class="scroll-ctrl-btn" onclick="scrollCards('awards-track', -1)">‹</button>
+          <button class="scroll-ctrl-btn" onclick="scrollCards('awards-track', 1)">›</button>
+        </div>
+      </div>
+      <div class="cards-scroll-container">
+        <div class="cards-track" id="awards-track">
+
+          <div class="award-card">
+            <div class="award-icon">🏆</div>
+            <div class="award-year">2022</div>
+            <h3>CSI eGovernance Award</h3>
+            <p>Computer Society of India — 20th SIG eGovernance Award, New Delhi</p>
+            <a href="#" class="ac-link">View →</a>
+          </div>
+
+          <div class="award-card">
+            <div class="award-icon">🥇</div>
+            <div class="award-year">2021</div>
+            <h3>SKOCH Award</h3>
+            <p>Excellence in Digital Governance — SKOCH National Award, New Delhi</p>
+            <a href="#" class="ac-link">View →</a>
+          </div>
+
+          <div class="award-card">
+            <div class="award-icon">🎖️</div>
+            <div class="award-year">2017</div>
+            <h3>CSI NIHILENT eGovernance</h3>
+            <p>CSI NIHILENT eGovernance Award 2016-17, Kolkata</p>
+            <a href="#" class="ac-link">View →</a>
+          </div>
+
+          <div class="award-card">
+            <div class="award-icon">⭐</div>
+            <div class="award-year">2024</div>
+            <h3>Digital India Excellence</h3>
+            <p>Outstanding contribution to Digital Education in hill state districts</p>
+            <a href="#" class="ac-link">View →</a>
+          </div>
+         </div>
+      </div>
+    </section>
+
+    <!-- IMPORTANT LINKS BANNER -->
+    <section class="imp-links-section content-card">
+      <div class="section-label">Resources</div>
+      <h2 class="section-title">Important Links</h2>
+      <div class="imp-links-grid">
+        <a href="https://educationportal.uk.gov.in" target="_blank" class="imp-link-card">
+          <span class="ilc-icon">🌐</span>
+          <span class="ilc-title">State Education Portal</span>
+          <span class="ilc-sub">educationportal.uk.gov.in</span>
+        </a>
+        <a href="https://www.cbse.gov.in/" target="_blank" class="imp-link-card">
+          <span class="ilc-icon">📘</span>
+          <span class="ilc-title">CBSE</span>
+          <span class="ilc-sub">Central Board of Secondary Education</span>
+        </a>
+        <a href="https://ubse.uk.gov.in" target="_blank" class="imp-link-card">
+          <span class="ilc-icon">📗</span>
+          <span class="ilc-title">UBSE</span>
+          <span class="ilc-sub">Uttarakhand Board of School Education</span>
+        </a>
+        <a href="#" class="imp-link-card">
+          <span class="ilc-icon">🏛️</span>
+          <span class="ilc-title">SCERT Uttarakhand</span>
+          <span class="ilc-sub">State Council of Educational Research</span>
+        </a>
+        <a href="#" class="imp-link-card">
+          <span class="ilc-icon">📊</span>
+          <span class="ilc-title">UDISE+ Portal</span>
+          <span class="ilc-sub">Unified District Information System</span>
+        </a>
+        <a href="#" class="imp-link-card">
+          <span class="ilc-icon">🎓</span>
+          <span class="ilc-title">PM eVidya</span>
+          <span class="ilc-sub">Digital Learning Platform</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="sidebar-col">
+
+    <!-- QUICK ACTIONS -->
+    <div class="sidebar-card quick-actions-card">
+      <div class="sidebar-card-title">Quick Services</div>
+      <div class="quick-actions-grid">
+        <button class="qa-btn" onclick="openComplaintDashboard()">
+          <span class="qa-icon">📝</span>
+          <span>File Complaint</span>
+        </button>
+        <a href="#" class="qa-btn">
+          <span class="qa-icon">💳</span>
+          <span>Fee Portal</span>
+        </a>
+        <a href="#" class="qa-btn">
+          <span class="qa-icon">📋</span>
+          <span>TC / Migration</span>
+        </a>
+        <a href="#" class="qa-btn">
+          <span class="qa-icon">🏫</span>
+          <span>School Search</span>
+        </a>
+        <a href="#" class="qa-btn">
+          <span class="qa-icon">📊</span>
+          <span>Results</span>
+        </a>
+        <a href="#" class="qa-btn">
+          <span class="qa-icon">📞</span>
+          <span>Contact DEO</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- NOTICES -->
+    <div class="sidebar-card notices-card">
+      <div class="sidebar-card-title">📌 Notices & Announcements</div>
+      <div class="notices-scroll-wrap">
+        <ul class="notices-list" id="noticesList">
+          <li class="notice-item new">
+            <span class="notice-new-badge">NEW</span>
+            <a href="#">Teacher Transfer Order – April 2025 Batch</a>
+            <span class="notice-date">08 Apr 2025</span>
+          </li>
+          <li class="notice-item new">
+            <span class="notice-new-badge">NEW</span>
+            <a href="#">UBSE Class 10 Results Declared – Check Now</a>
+            <span class="notice-date">05 Apr 2025</span>
+          </li>
+          <li class="notice-item">
+            <a href="#">Recruitment Notice: 1200 Assistant Teacher Posts</a>
+            <span class="notice-date">01 Apr 2025</span>
+          </li>
+          <li class="notice-item">
+            <a href="#">Annual Examination Schedule 2024-25</a>
+            <span class="notice-date">28 Mar 2025</span>
+          </li>
+          <li class="notice-item">
+            <a href="#">CCL Order Amendment – March 2025</a>
+            <span class="notice-date">25 Mar 2025</span>
+          </li>
+          <li class="notice-item">
+            <a href="#">Mid-Day Meal Programme Update – Q4</a>
+            <span class="notice-date">20 Mar 2025</span>
+          </li>
+          <li class="notice-item">
+            <a href="#">Smart Classroom Project — District-wise Rollout</a>
+            <span class="notice-date">15 Mar 2025</span>
+          </li>
+          <li class="notice-item">
+            <a href="#">ACR Submission Deadline Extended</a>
+            <span class="notice-date">10 Mar 2025</span>
+          </li>
+          <li class="notice-item">
+            <a href="#">Hackathon: Innovate UK — Registration Open</a>
+            <span class="notice-date">05 Mar 2025</span>
+          </li>
+          <li class="notice-item">
+            <a href="#">Seniority List 2025 – LT/Lecturer/Principal</a>
+            <span class="notice-date">01 Mar 2025</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- HOLIDAY CALENDAR -->
+    <div class="sidebar-card calendar-card">
+      <div class="sidebar-card-title">📅 Holiday Calendar 2025</div>
+      <div class="mini-calendar">
+        <div class="cal-header">
+          <button class="cal-nav" onclick="changeMonth(-1)">‹</button>
+          <span class="cal-month-label" id="calMonthLabel">April 2025</span>
+          <button class="cal-nav" onclick="changeMonth(1)">›</button>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-day-header">Sun</div>
+          <div class="cal-day-header">Mon</div>
+          <div class="cal-day-header">Tue</div>
+          <div class="cal-day-header">Wed</div>
+          <div class="cal-day-header">Thu</div>
+          <div class="cal-day-header">Fri</div>
+          <div class="cal-day-header">Sat</div>
+          <!-- Days rendered by JS -->
+          <div id="calDays"></div>
+        </div>
+        <div class="cal-legend">
+          <span class="cal-leg-item"><span class="leg-dot holiday"></span>Holiday</span>
+          <span class="cal-leg-item"><span class="leg-dot today"></span>Today</span>
+          <span class="cal-leg-item"><span class="leg-dot weekend"></span>Weekend</span>
+        </div>
+        <div class="holidays-list" id="holidaysList"></div>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- ===== MAP SECTION ===== -->
+<section class="map-section">
+  <div class="map-section-inner">
+    <div class="map-info">
+      <div class="section-label">Find Us</div>
+      <h2 class="section-title">Our Location</h2>
+      <div class="location-detail">
+        <div class="loc-icon">📍</div>
+        <div class="loc-text">
+          <strong>Directorate General of School Education Uttarakhand</strong><br>
+          Nanoorkhera, Dehradun — 248001<br>
+          Uttarakhand, India
+        </div>
+      </div>
+      <div class="location-detail">
+        <div class="loc-icon">📞</div>
+        <div class="loc-text">
+          <strong>Helpline:</strong> 0135-2710133<br>
+          <strong>Email:</strong> dir.schooledu-ua@gov.in
+        </div>
+      </div>
+      <div class="location-detail">
+        <div class="loc-icon">🕒</div>
+        <div class="loc-text">
+          <strong>Office Hours:</strong> Mon–Fri, 10:00 AM – 5:00 PM<br>
+          Closed on Saturdays, Sundays & Public Holidays
+        </div>
+      </div>
+      <div class="map-district-badges">
+        <div class="section-label" style="margin-top:16px;">All 13 Districts</div>
+        <div class="district-badges">
+          <span class="dist-badge">Dehradun</span>
+          <span class="dist-badge">Haridwar</span>
+          <span class="dist-badge">Nainital</span>
+          <span class="dist-badge">Almora</span>
+          <span class="dist-badge">Pithoragarh</span>
+          <span class="dist-badge">Pauri Garhwal</span>
+          <span class="dist-badge">Tehri Garhwal</span>
+          <span class="dist-badge">Uttarkashi</span>
+          <span class="dist-badge">Chamoli</span>
+          <span class="dist-badge">Rudraprayag</span>
+          <span class="dist-badge">Bageshwar</span>
+          <span class="dist-badge">Champawat</span>
+          <span class="dist-badge">US Nagar</span>
+        </div>
+      </div>
+    </div>
+    <div class="map-embed-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3444.1!2d78.0413!3d30.3165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3909283987dfb591%3A0x17049f374c74ec8b!2sDirectorate%20of%20Education%2C%20Uttarakhand!5e0!3m2!1sen!2sin!4v1620000000000"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" title="Directorate of School Education, Dehradun">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARTNER LOGOS ===== -->
+<div class="partners-bar">
+  <div class="partner-item">🏛️ Open Govt Data</div>
+  <div class="partner-item">🇮🇳 Make in India</div>
+  <div class="partner-item">🌄 Incredible India</div>
+  <div class="partner-item">🌐 National Portal</div>
+  <div class="partner-item">💻 Digital India</div>
+  <div class="partner-item">🏠 PM India</div>
+  <div class="partner-item">🗳️ MyGov</div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <div class="footer-brand">
+        <div class="footer-emblem">UK</div>
+        <div>
+          <div class="footer-dept-name">Department of School Education</div>
+          <div class="footer-dept-sub">Uttarakhand, India</div>
+        </div>
+      </div>
+      <p class="footer-about-text">Committed to empowering every child in Uttarakhand with quality, inclusive and modern education from the plains to the highest peaks.</p>
+    </div>
+    <div class="footer-links-col">
+      <div class="footer-col-title">Quick Links</div>
+      <ul>
+        <li><a href="#">Website Policies</a></li>
+        <li><a href="#">Feedback</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Web Info Manager</a></li>
+        <li><a href="#">Sitemap</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-col">
+      <div class="footer-col-title">Portals</div>
+      <ul>
+        <li><a href="#">Education Portal UK</a></li>
+        <li><a href="#">UBSE Exam Portal</a></li>
+        <li><a href="#">SCERT Uttarakhand</a></li>
+        <li><a href="#">RTI Online</a></li>
+        <li><a href="#">e-District Portal</a></li>
+        <li><a href="#">PM eVidya</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-col">
+      <div class="footer-col-title">Help & Support</div>
+      <ul>
+        <li><a href="#" onclick="openComplaintDashboard();return false;">File a Complaint</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Download Forms</a></li>
+        <li><a href="#">Toll Free: 1800-419-0405</a></li>
+        <li><a href="#">dir.schooledu-ua@gov.in</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>Content Owned by Department of School Education, Dehradun</div>
+    <div>Developed & Hosted by National Informatics Centre, MeitY, Government of India | Last Updated: April 2025</div>
+    <div class="footer-logos">
+      <span class="footer-logo-badge">S3WaaS</span>
+      <span class="footer-logo-badge">NIC</span>
+      <span class="footer-logo-badge">Digital India</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================================
+     COMPLAINT DASHBOARD OVERLAY
+     =================================== -->
+<div class="cd-overlay" id="cdOverlay" onclick="overlayClose(event)">
+  <div class="cd-panel" onclick="event.stopPropagation()">
+
+    <div class="cd-header">
+      <div>
+        <h2>📝 Complaints & Requests</h2>
+        <p>Department of School Education — Grievance Management Portal</p>
+      </div>
+      <button class="cd-close" onclick="closeComplaintDashboard()">✕</button>
+    </div>
+
+    <!-- STATS -->
+    <div class="cd-stats">
+      <div class="cd-stat total">
+        <div class="cd-stat-num" id="cd_total">0</div>
+        <div class="cd-stat-lbl">Total Filed</div>
+      </div>
+      <div class="cd-stat pending">
+        <div class="cd-stat-num" id="cd_pending">0</div>
+        <div class="cd-stat-lbl">Pending</div>
+      </div>
+      <div class="cd-stat resolved">
+        <div class="cd-stat-num" id="cd_resolved">0</div>
+        <div class="cd-stat-lbl">Resolved</div>
+      </div>
+      <div class="cd-stat helpline">
+        <div class="cd-stat-num">1800</div>
+        <div class="cd-stat-lbl">Toll Free</div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="cd-tabs">
+      <button class="cd-tab active" onclick="cdSwitchTab(this,'cdt-file')">📝 File Complaint</button>
+      <button class="cd-tab" onclick="cdSwitchTab(this,'cdt-list')">📋 My Complaints</button>
+      <button class="cd-tab" onclick="cdSwitchTab(this,'cdt-track')">🔍 Track Status</button>
+    </div>
+
+    <div class="cd-body">
+
+      <!-- FILE COMPLAINT TAB -->
+      <div id="cdt-file">
+        <h3 class="cd-tab-heading">Register a New Complaint or Request</h3>
+        <div class="cd-form-grid">
+          <div class="cd-fg">
+            <label>Full Name *</label>
+            <input type="text" id="cf_name" placeholder="Enter your full name">
+          </div>
+          <div class="cd-fg">
+            <label>Mobile Number *</label>
+            <input type="tel" id="cf_mobile" placeholder="10-digit mobile number">
+          </div>
+          <div class="cd-fg">
+            <label>Email Address</label>
+            <input type="email" id="cf_email" placeholder="your@email.com">
+          </div>
+          <div class="cd-fg">
+            <label>Employee / Student ID</label>
+            <input type="text" id="cf_empid" placeholder="Teacher / Student ID (if applicable)">
+          </div>
+          <div class="cd-fg">
+            <label>Complaint Category *</label>
+            <select id="cf_cat">
+              <option value="">-- Select Category --</option>
+              <option>Teacher Transfer / Posting Issue</option>
+              <option>Salary / Pay Dispute</option>
+              <option>School Infrastructure Problem</option>
+              <option>Mid-Day Meal Complaint</option>
+              <option>Examination Related</option>
+              <option>Scholarship / Fee Issue</option>
+              <option>Admission Problem</option>
+              <option>Text Book / Material Unavailability</option>
+              <option>Digital Device / Internet Connectivity</option>
+              <option>Teacher Misconduct</option>
+              <option>RTI Related</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="cd-fg">
+            <label>District *</label>
+            <select id="cf_dist">
+              <option value="">-- Select District --</option>
+              <option>Dehradun</option>
+              <option>Haridwar</option>
+              <option>Nainital</option>
+              <option>Almora</option>
+              <option>Pithoragarh</option>
+              <option>Pauri Garhwal</option>
+              <option>Tehri Garhwal</option>
+              <option>Uttarkashi</option>
+              <option>Chamoli</option>
+              <option>Rudraprayag</option>
+              <option>Bageshwar</option>
+              <option>Champawat</option>
+              <option>US Nagar</option>
+            </select>
+          </div>
+          <div class="cd-fg cd-full">
+            <label>School Name (if applicable)</label>
+            <input type="text" id="cf_school" placeholder="Name of school concerned">
+          </div>
+          <div class="cd-fg cd-full">
+            <label>Complaint Description *</label>
+            <textarea id="cf_desc" rows="4" placeholder="Please describe your complaint or request in detail..."></textarea>
+          </div>
+        </div>
+        <div class="cd-form-actions">
+          <button class="cd-btn-primary" onclick="cdFileComplaint()">✓ Submit Complaint</button>
+          <button class="cd-btn-reset" onclick="cdResetForm()">Reset</button>
+        </div>
+        <div id="cd_msg" style="display:none;" class="cd-msg"></div>
+      </div>
+
+      <!-- MY COMPLAINTS TAB -->
+      <div id="cdt-list" style="display:none;">
+        <h3 class="cd-tab-heading">Your Filed Complaints</h3>
+        <div id="cd_complaints_list" class="cd-complaints-list"></div>
+      </div>
+
+      <!-- TRACK STATUS TAB -->
+      <div id="cdt-track" style="display:none;">
+        <h3 class="cd-tab-heading">Track Your Complaint Status</h3>
+        <div class="cd-track-bar">
+          <input type="text" id="cd_track_input" placeholder="Enter Complaint ID (e.g. DSE-2025-123456) or Mobile Number">
+          <button class="cd-btn-primary" onclick="cdTrackComplaint()">🔍 Track</button>
+        </div>
+        <div id="cd_track_result" style="display:none;"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="../nagrik_prefill.js"></script>
+<script src="script_shiksha.js"></script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+# Convenience pointer — use requirements/development.txt for full client install.
+-r requirements/development.txt

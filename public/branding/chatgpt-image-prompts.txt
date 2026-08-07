@@ -1,0 +1,65 @@
+Nagrik Awaaz — image prompts for ChatGPT / DALL·E / Midjourney
+================================================================
+Brand palette (always mention): forest green #2d6a4f, deep navy #1b2a4a,
+warm sand / tan accent #d4a373, off-white / sage background #f4f7f9 and #eaf0ec.
+Style: modern civic-tech India, clean flat illustration or soft 3D, trustworthy,
+no cluttered text in images, no fake logos with unreadable letters.
+
+1) Hero — citizen & city
+   "Wide hero illustration for a civic complaint app: diverse citizens in an Indian
+   city street, one person holding a phone showing a simple green UI waveform,
+   subtle map pin and leaf motifs, color palette forest green #2d6a4f navy #1b2a4a
+   sand #d4a373 on soft sage background #f4f7f9, minimalist, hopeful, daytime,
+   no text, no watermark, 16:9"
+
+2) Voice reporting
+   "App feature art: smartphone with microphone and gentle sound waves, abstract city
+   skyline silhouette behind, colors green #2d6a4f and navy #1b2a4a accents on #eaf0ec
+   background, flat vector, friendly, no readable UI text, square 1:1"
+
+3) Officer / desk dashboard (admin)
+   "Abstract dashboard screens with charts and ticket cards, tiny map pins,
+   professional civic government tech aesthetic, greens and navy with sand highlights
+   #d4a373, light background #f4f7f9, isometric or soft 3D, no logos, 16:9"
+
+4) Community verification / trust
+   "Hands raising phones to confirm a street issue, subtle checkmark motif,
+   inclusive silhouettes, same palette green navy sand sage, optimistic editorial
+   illustration, horizontal banner 3:1"
+
+5) Empty state — no complaints yet
+   "Friendly empty-state illustration: clipboard with a small sprouting plant,
+   soft greens #2d6a4f and sage #eaf0ec, calm minimal style, square 1:1, no words"
+
+6) FAQ / help
+   "Open book or speech bubbles with question marks stylized as leaves,
+   civic green and navy, sand accents, white background #ffffff with sage corners,
+   knowledge-base vibe, clean vector, 4:3"
+
+7) Login page — left panel (portrait / tall web split)
+   "Vertical illustration for a login screen sidebar: calm civic-tech mood,
+   subtle padlock or fingerprint merged with a smartphone silhouette, soft city
+   skyline haze in background, palette forest green #2d6a4f navy #1b2a4a sand
+   #d4a373 on sage #eaf0ec, premium SaaS aesthetic, lots of breathing room,
+   no UI text in image, no logos, portrait-friendly 3:4 or 4:5"
+
+8) Register page — left panel (welcoming, onboarding)
+   "Vertical onboarding illustration for citizen registration: diverse person
+   completing profile on phone with gentle leaf / map-pin motifs, hopeful daylight,
+   same colors green navy sand sage, welcoming community civic vibe, modern flat
+   or soft 3D, no readable text, no fake logos, portrait 3:4 or 4:5"
+
+Save exported files as (copy into nagrik-awaaz-app/public/branding/):
+  login-hero.png
+  register-hero.png
+
+Deployed assets (copy into nagrik-awaaz-app/public/branding/):
+  hero-wide.png          ← Hero (wide).png
+  voice-feature.png      ← Voice feature.png
+  officer-desk.png       ← Officer desk.png
+  trust-verification.png ← Trust / verification.png (Trust  verification.png)
+  empty-state.png        ← Empty state.png
+  faq-hero.png           ← FAQ.png
+  nagrik-awaaz-logo.png  ← Nagrik-awaaz-logo.png (navbar)
+  login-hero.png         ← generate with prompt (7), optional until added
+  register-hero.png      ← generate with prompt (8), optional until added

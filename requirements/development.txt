@@ -1,0 +1,32 @@
+# Full local / client setup: pip install -r requirements/development.txt
+# Python 3.10+ required (3.11 or 3.13 recommended on Windows).
+
+-r base.txt
+
+# Dev toolbar (optional — skipped automatically if not installed)
+django-debug-toolbar>=4.2
+
+# Tests
+pytest>=8.0
+pytest-django>=4.8
+factory-boy>=3.3
+
+# Agent1 ML classifier (optional — rule-based fallback works without these)
+pandas>=2.0
+scikit-learn>=1.4
+joblib>=1.3
+textblob>=0.18
+
+# Agent1 Groq LLM drafts (optional — template fallback without API key)
+groq>=0.9
+
+# Voice speech-to-text (Whisper). First transcribe downloads ~500 MB "small" model.
+# PyTorch install may take several minutes on first pip install.
+openai-whisper>=20231117
+imageio-ffmpeg>=0.4.9
+
+# Audio duration metadata (optional)
+mutagen>=1.47
+
+# SMS OTP in production (optional — dev shows OTP in API response)
+# twilio>=9.0

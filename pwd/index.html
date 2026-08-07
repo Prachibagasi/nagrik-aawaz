@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homepage | Public Works Department | Uttarakhand</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="pwd_styles.css" />
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <a href="https://uk.gov.in/" target="_blank">उत्तराखण्ड</a>
+    <a href="https://uk.gov.in/" target="_blank">Uttarakhand</a>
+  </div>
+  <div class="top-bar-right">
+    <a href="#">हिन्दी</a>
+    <a href="#" title="YouTube">&#9654; YouTube</a>
+    <a href="#">Accessibility Tools</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-left">
+    <img src="images/pwd_logo.jpg" alt="PWD Logo" class="header-logo" onerror="this.style.background='#003580';this.style.padding='8px';this.alt='PWD'" />
+    <div class="header-title">
+      <h1>लोक निर्माण विभाग उत्तराखंड सरकार</h1>
+      <h2>Public Works Department</h2>
+      <p>Government of Uttarakhand</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <img src="https://cdnbbsr.s3waas.gov.in/s31e0a84051e6a4a7381473328f43c4884/uploads/2019/03/2019031587.png" alt="Digital India" />
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#">Home</a>
+    <div class="dropdown">
+      <a href="#">About Department ▾</a>
+      <div class="dropdown-menu">
+        <a href="#">About Us</a>
+        <a href="#">PWD Organisation</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Allotments ▾</a>
+      <div class="dropdown-menu">
+        <a href="#">Consolidated Sheet</a>
+        <a href="#">Central Scheme</a>
+        <a href="#">State Sector</a>
+        <a href="#">Disaster Management</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Circulars &amp; Guidelines ▾</a>
+      <div class="dropdown-menu">
+        <a href="#">Circular (Quality Control)</a>
+        <a href="#">Circular Building</a>
+        <a href="#">Circular (Bridge)</a>
+        <a href="#">Court Cases</a>
+        <a href="#">Establishment</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Road Safety ▾</a>
+      <div class="dropdown-menu">
+        <a href="#">Supreme Court Orders</a>
+        <a href="#">Government Orders</a>
+        <a href="#">Engineer-In-Chief's Orders</a>
+        <a href="#">Compliances</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">Government Orders ▾</a>
+      <div class="dropdown-menu">
+        <a href="#">G.O. (Administration)</a>
+        <a href="#">Job Charts</a>
+        <a href="#">Service Rule</a>
+        <a href="#">G.O. (Miscellaneous)</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">RTI ▾</a>
+      <div class="dropdown-menu">
+        <a href="#">RTI Manual</a>
+        <a href="#">Departmental Progress</a>
+        <a href="#">DPC Committee Details</a>
+      </div>
+    </div>
+    <a href="#">Contact Us</a>
+    <a href="#">Photo Gallery</a>
+    <a href="#">Recruitments</a>
+    <a href="complaint.html" style="color:#ffe066;font-weight:700;">⚑ Complaints</a>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-label">Latest News</div>
+  <div class="ticker-content">
+    <span class="ticker-text">
+      &nbsp;&nbsp;&nbsp; Rispana-Bindal Elevated Road Project to Gain Speed &nbsp;|&nbsp;
+      Uttarakhand CM Dhami directs to start work of Rispana and Bindal Corridor &nbsp;|&nbsp;
+      PWD Uttarakhand – Constructing, Maintaining and Planning Roads, Bridges &amp; Government Buildings &nbsp;|&nbsp;
+      Right to Service portal now active for citizens &nbsp;|&nbsp;
+      New tenders available on e-procurement portal uktenders.gov.in
+    </span>
+  </div>
+</div>
+
+<!-- SLIDER -->
+<div class="slider-wrap">
+  <div class="slider-track" id="sliderTrack">
+    <div class="slide">
+      <img src="images/image3.jpg" alt="Slide 1" />
+      <div class="slide-overlay"><div class="slide-caption">Public Works Department – Uttarakhand</div></div>
+    </div>
+    <div class="slide">
+      <img src="images/image1.jpg" alt="Slide 2" />
+      <div class="slide-overlay"><div class="slide-caption">Building Roads &amp; Bridges Across Uttarakhand</div></div>
+    </div>
+    <div class="slide">
+      <img src="images/image2.jpg" alt="Slide 3" />
+      <div class="slide-overlay"><div class="slide-caption">Connecting Communities, Enabling Progress</div></div>
+    </div>
+    <div class="slide">
+      <img src="images/image5.png" alt="Slide 4" />
+      <div class="slide-overlay"><div class="slide-caption">Infrastructure for a Stronger Uttarakhand</div></div>
+    </div>
+    <div class="slide">
+      <img src="images/image4.jpg" alt="Slide 5" />
+      <div class="slide-overlay"><div class="slide-caption">Lok Nirman Vibhag – 130+ Years of Service</div></div>
+    </div>
+  </div>
+  <button class="slider-btn prev" id="prevBtn">&#8249;</button>
+  <button class="slider-btn next" id="nextBtn">&#8250;</button>
+  <div class="slider-dots" id="sliderDots">
+    <div class="dot active" onclick="goTo(0)"></div>
+    <div class="dot" onclick="goTo(1)"></div>
+    <div class="dot" onclick="goTo(2)"></div>
+    <div class="dot" onclick="goTo(3)"></div>
+    <div class="dot" onclick="goTo(4)"></div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-wrap">
+
+  <!-- NEWS + ABOUT -->
+  <div class="top-grid">
+
+    <!-- Latest News -->
+    <div class="news-box">
+      <div class="news-box-header">📢 Latest News</div>
+      <ul class="news-list">
+        <li>
+          <a href="#">Rispana-Bindal Elevated Road Project to Gain Speed <span class="new-badge">NEW</span></a>
+        </li>
+        <li>
+          <a href="#">Uttarakhand CM Dhami directs to start work of Rispana and Bindal Corridor <span class="new-badge">NEW</span></a>
+        </li>
+        <li>
+          <a href="#">Transfer Act 2026 – Important Notice for All Employees</a>
+        </li>
+        <li>
+          <a href="#">Right to Service portal now live for citizens</a>
+        </li>
+        <li>
+          <a href="#">Disclosure of Property – Submission Deadline Extended</a>
+        </li>
+        <li>
+          <a href="#">PWD Phone Directory Updated – April 2026</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- About Dept -->
+    <div class="about-box">
+      <h2 class="section-title">About the Department</h2>
+      <div class="about-inner">
+        <div class="about-text">
+          <p>Uttarakhand was carved out of the northern part of Uttar Pradesh on 9th Nov 2000. It is bounded by Uttar Pradesh on the South, Nepal on the East, Himachal Pradesh on the west, and China on the northeast. The geographical area of the state is 53,483 sq km.</p>
+          <p><strong>Lok Nirman Vibhag,</strong> popularly known as P.W.D., has a legacy of more than 130 years. P.W.D. is responsible for constructing, maintaining and planning roads, bridges and Govt. Buildings. In view of strategic location of Uttarakhand bordering China/Tibet &amp; Nepal, the responsibility of P.W.D. becomes of much more attention and seriousness from National Importance.</p>
+          <p><a href="#">Read More →</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIGNITARIES -->
+  <div class="dignitaries">
+    <div class="dignitary-card">
+      <img src="images/CM.jpg" alt="Chief Minister" onerror="this.style.background='#e0e8ff'" />
+      <div class="role">Hon'ble Chief Minister</div>
+      <div class="name">Shri Pushkar Singh Dhami</div>
+    </div>
+    <div class="dignitary-card">
+      <img src="images/PWD_Officer.jpg" alt="Minister PWD" onerror="this.style.background='#e0e8ff'" />
+      <div class="role">Hon'ble Minister of PWD</div>
+      <div class="name">Shri Satpal Ji Maharaj</div>
+    </div>
+  </div>
+
+  <!-- EVENTS + NEWS/TENDERS -->
+  <div class="mid-grid">
+
+    <!-- Events -->
+    <div>
+      <h2 class="section-title">Events</h2>
+      <div class="event-card">
+        <img src="images/CM_addressal.jpg" alt="CM Dhami" onerror="this.style.background='#cce0ff';this.style.minHeight='180px'" />
+        <div class="event-card-body">
+          <h4>Uttarakhand CM Dhami directs to start work of Rispana and Bindal Corridor</h4>
+          <p>Dehradun (Uttarakhand) [India], February 17 (ANI): Uttarakhand Chief Minister Pushkar Singh Dhami has directed officials to begin work on the prestigious Rispana-Bindal elevated corridor project...</p>
+          <a href="#">View All Events →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- News/Tenders Tab -->
+    <div>
+      <h2 class="section-title">News &amp; Tenders</h2>
+      <div class="tab-box">
+        <div class="tab-btns">
+          <button class="tab-btn active" onclick="switchTab(this,'news-tab')">News</button>
+          <button class="tab-btn" onclick="switchTab(this,'tenders-tab')">Tenders</button>
+        </div>
+        <div class="tab-content active" id="news-tab">
+          <ul>
+            <li><a href="#">Rispana-Bindal Elevated Road Project to Gain Speed</a></li>
+            <li><a href="#">Uttarakhand CM Dhami directs to start work of Rispana and Bindal Corridor</a></li>
+            <li><a href="#">PWD Department Annual Review Meeting – Summary Report</a></li>
+            <li><a href="#">New Circular on Road Safety Compliance Released</a></li>
+          </ul>
+        </div>
+        <div class="tab-content" id="tenders-tab">
+          <ul>
+            <li><em>No tenders posted currently. Visit <a href="http://uktenders.gov.in" target="_blank">uktenders.gov.in</a> for updates.</em></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPORTANT LINKS -->
+  <div class="links-section">
+    <h2 class="section-title">Important Links</h2>
+    <div class="links-grid">
+      <a class="link-item" href="http://urtsc.uk.gov.in" target="_blank">Seva Ka Adhikar</a>
+      <a class="link-item" href="https://mis.pwduk.in/pwd/sor" target="_blank">PWD Schedule of Rate (SOR)</a>
+      <a class="link-item" href="https://roadcuttingpwd.uk.gov.in" target="_blank">Right of Way Permission</a>
+      <a class="link-item" href="http://uktenders.gov.in" target="_blank">e-Procurement Portal</a>
+      <a class="link-item" href="http://usdma.uk.gov.in" target="_blank">Uttarakhand SDMA</a>
+      <a class="link-item" href="http://adb.org" target="_blank">Asian Development Bank</a>
+      <a class="link-item" href="http://www.nvsp.in" target="_blank">National Voters Service Portal</a>
+      <a class="link-item" href="http://www.ukrd.gov.in" target="_blank">Uttarakhand PMGSY</a>
+      <a class="link-item" href="https://go.uk.gov.in/" target="_blank">Government Orders</a>
+      <a class="link-item" href="http://www.morth.nic.in" target="_blank">Ministry of Road Transport</a>
+      <a class="link-item" href="https://cmhelpline.uk.gov.in/" target="_blank">CM Help Line</a>
+      <a class="link-item" href="https://cpwd.gov.in/" target="_blank">CPWD</a>
+      <a class="link-item" href="https://registrationpwd.uk.gov.in/Dashboard.aspx" target="_blank">Contractor's Registration</a>
+      <a class="link-item" href="https://mis.pwduk.in/pwd/budgetSummary" target="_blank">Budget Analysis</a>
+      <a class="link-item" href="https://roadcuttingpwd.uk.gov.in/" target="_blank">R.O.W Road Cutting Permission</a>
+      <a class="link-item" href="https://investuttarakhand.uk.gov.in/" target="_blank">Contractor's Registration Portal</a>
+    </div>
+  </div>
+
+  <!-- PHOTO GALLERY -->
+  <div class="gallery-section">
+    <h2 class="section-title">Photo Gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="images/image6.jpg" alt="Gallery 1" />
+      </div>
+      <div class="gallery-item">
+        <img src="images/image7.jpg" alt="Gallery 2" />
+      </div>
+    </div>
+    <div class="gallery-view-all" style="margin-top:14px;">
+      <a href="#">View All →</a>
+    </div>
+  </div>
+
+</div><!-- end main-wrap -->
+
+<!-- BOTTOM LOGOS -->
+<div class="bottom-logos">
+  <div class="logos-inner">
+    <a href="https://data.gov.in/" target="_blank">
+      <img src="pwd/images/image8.png" alt="OGD Platform" />
+    </a>
+    <a href="http://www.makeinindia.com/" target="_blank">
+      <img src="pwd/images/image9.png" alt="Make in India" />
+    </a>
+    <a href="https://incredibleindia.org/" target="_blank">
+      <img src="pwd/images/image10.png" alt="Incredible India" />
+    </a>
+    <a href="https://www.india.gov.in/" target="_blank">
+      <img src="pwd/images/image11.png" alt="National Portal of India" />
+    </a>
+    <a href="http://www.digitalindia.gov.in/" target="_blank">
+      <img src="pwd/images/image12.png" alt="Digital India" />
+    </a>
+    <a href="https://www.pmindia.gov.in/" target="_blank">
+      <img src="pwd/images/image13.png" alt="Prime Minister of India" />
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    Content Owned by <strong>Public Works Department, Government of Uttarakhand</strong><br />
+    Developed and hosted by <a href="http://www.nic.in/" target="_blank">National Informatics Centre</a>,
+    Ministry of Electronics &amp; Information Technology, Government of India<br />
+    Last Updated: <strong>April 2026</strong>
+  </div>
+  <div class="footer-links">
+    <a href="#">Feedback</a>
+    <a href="#">Website Policies</a>
+    <a href="#">Help</a>
+    <a href="#">Web Information Manager</a>
+    <a href="#">Contact Us</a>
+  </div>
+</footer>
+
+<script src="pwd_script.js"></script>
+</body>
+</html>

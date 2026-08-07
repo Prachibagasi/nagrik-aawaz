@@ -1,0 +1,209 @@
+.active-tab {
+    color: #0a66ab;
+    font-weight: bold;
+    border-bottom: 2px solid #0a66ab;
+}
+
+.complaint-page {
+    display: flex;
+    gap: 24px;
+    padding: 30px;
+    min-height: calc(100vh - 280px);
+    background: #f4f6f9;
+    box-sizing: border-box;
+}
+
+/* LEFT — Form */
+.complaint-form-box {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0a66ab;
+    margin-bottom: 20px;
+    font-family: Helvetica, Arial, sans-serif;
+    border-bottom: 2px solid #0a66ab;
+    padding-bottom: 8px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: Helvetica, Arial, sans-serif;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #0a66ab;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #0a66ab;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #005a96;
+}
+
+/* RIGHT — Dashboard */
+.complaint-dashboard {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dashboard-stats {
+    display: flex;
+    gap: 12px;
+}
+
+.stat-box {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-num {
+    font-size: 28px;
+    font-weight: bold;
+    color: #0a66ab;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #666;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#pendingBox .stat-num  { color: #e65100; }
+#resolvedBox .stat-num { color: #2e7d32; }
+
+.complaints-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.no-complaints {
+    text-align: center;
+    color: #999;
+    font-family: Helvetica, Arial, sans-serif;
+    margin-top: 40px;
+}
+
+.complaint-card {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.complaint-id {
+    font-size: 13px;
+    font-weight: bold;
+    color: #0a66ab;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.complaint-status {
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.status-pending  { background: #fff3e0; color: #e65100; }
+.status-resolved { background: #e8f5e9; color: #2e7d32; }
+
+.card-type {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.card-desc {
+    font-size: 13px;
+    color: #555;
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.card-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #999;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .complaint-page {
+        flex-direction: column;
+        padding: 16px;
+    }
+    .dashboard-stats {
+        flex-wrap: wrap;
+    }
+}

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complaint Portal | PWD Uttarakhand</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="complaint.css" />
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div>
+    <a href="https://uk.gov.in/" target="_blank">उत्तराखण्ड</a>
+    <a href="https://uk.gov.in/" target="_blank">Uttarakhand</a>
+  </div>
+  <div>
+    <a href="#">हिन्दी</a>
+    <a href="#">Accessibility Tools</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-left">
+    <img src="images/pwd_logo.jpg" alt="PWD" class="header-logo" onerror="this.style.display='flex'" />
+    <div class="header-title">
+      <h1>लोक निर्माण विभाग उत्तराखंड सरकार</h1>
+      <h2>Public Works Department</h2>
+      <p>Government of Uttarakhand</p>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="#">About Department</a>
+  <a href="#">Circulars &amp; Guidelines</a>
+  <a href="#">Road Safety</a>
+  <a href="#">Government Orders</a>
+  <a href="#">RTI</a>
+  <a href="#">Contact Us</a>
+  <a href="#">Photo Gallery</a>
+  <a href="#">Recruitments</a>
+  <a href="complaints.html" class="active-tab">⚑ Complaints</a>
+</nav>
+
+<!-- HERO -->
+<div class="portal-hero">
+  <h1>⚑ Citizen Complaint Portal</h1>
+  <p>Public Works Department, Government of Uttarakhand — File, Track &amp; Monitor Complaints</p>
+  <div class="hero-badges">
+    <span class="hero-badge">🔒 Secure &amp; Transparent</span>
+    <span class="hero-badge">⏱ 30-Day Resolution Target</span>
+    <span class="hero-badge">📱 Track Anytime</span>
+    <span class="hero-badge">🌐 Open Public Registry</span>
+  </div>
+</div>
+
+<!-- PORTAL CONTENT -->
+<div class="portal-wrap">
+
+  <!-- STATS -->
+  <div class="stats-bar" id="statsBar">
+    <div class="stat-card">
+      <div class="stat-num" id="statTotal">0</div>
+      <div class="stat-label">Total Complaints</div>
+    </div>
+    <div class="stat-card s-pending">
+      <div class="stat-num" id="statPending">0</div>
+      <div class="stat-label">Pending</div>
+    </div>
+    <div class="stat-card s-progress">
+      <div class="stat-num" id="statProgress">0</div>
+      <div class="stat-label">In Progress</div>
+    </div>
+    <div class="stat-card s-resolved">
+      <div class="stat-num" id="statResolved">0</div>
+      <div class="stat-label">Resolved</div>
+    </div>
+  </div>
+
+  <!-- MAIN TABS -->
+  <div class="main-tabs">
+    <button class="main-tab active" id="btn-tab-file" onclick="openTab(event,'tab-file')">📝 File a Complaint</button>
+    <button class="main-tab" id="btn-tab-track" onclick="openTab(event,'tab-track')">🔍 Track My Complaint</button>
+    <button class="main-tab" id="btn-tab-public" onclick="openTab(event,'tab-public')">📋 Public Complaint Board</button>
+  </div>
+
+  <!-- ===== TAB 1: FILE ===== -->
+  <div class="tab-panel active" id="tab-file">
+    <div class="card">
+      <div class="card-title">File a New Complaint</div>
+      <div class="form-grid" id="complaintForm">
+
+        <div class="form-group">
+          <label>Full Name <span>*</span></label>
+          <input type="text" id="f-name" placeholder="e.g. Ramesh Kumar" />
+        </div>
+        <div class="form-group">
+          <label>Mobile Number <span>*</span></label>
+          <input type="tel" id="f-mobile" placeholder="10-digit mobile number" maxlength="10" />
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="f-email" placeholder="Optional — for updates" />
+        </div>
+        <div class="form-group">
+          <label>District <span>*</span></label>
+          <select id="f-district">
+            <option value="">— Select District —</option>
+            <option>Dehradun</option>
+            <option>Haridwar</option>
+            <option>Nainital</option>
+            <option>Udham Singh Nagar</option>
+            <option>Almora</option>
+            <option>Bageshwar</option>
+            <option>Chamoli</option>
+            <option>Champawat</option>
+            <option>Pauri Garhwal</option>
+            <option>Pithoragarh</option>
+            <option>Rudraprayag</option>
+            <option>Tehri Garhwal</option>
+            <option>Uttarkashi</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Complaint Category <span>*</span></label>
+          <select id="f-category">
+            <option value="">— Select Category —</option>
+            <option>Road Damage / Pothole</option>
+            <option>Bridge Condition</option>
+            <option>Government Building Issue</option>
+            <option>Illegal Road Cutting</option>
+            <option>Encroachment on Road</option>
+            <option>Drainage / Waterlogging</option>
+            <option>Streetlight / Road Marking</option>
+            <option>Contractor Negligence</option>
+            <option>Corruption / Bribery</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Location / Road Name <span>*</span></label>
+          <input type="text" id="f-location" placeholder="e.g. NH-72, near Rishikesh bypass" />
+        </div>
+        <div class="form-group full">
+          <label>Complaint Description <span>*</span></label>
+          <textarea id="f-desc" placeholder="Describe the issue in detail — what happened, when, and the impact..."></textarea>
+        </div>
+        <div class="form-group full">
+          <label>Upload Photo / Evidence</label>
+          <input type="file" id="f-file" accept="image/*,.pdf" />
+          <div class="form-note">Accepted: JPG, PNG, PDF (max 5 MB). This helps speed up resolution.</div>
+        </div>
+
+      </div>
+      <button class="submit-btn" onclick="submitComplaint()">Submit Complaint →</button>
+
+      <div class="toast" id="submitToast">
+        <strong>✅ Complaint Filed Successfully!</strong>
+        Your Complaint ID: <strong id="generatedID">—</strong><br />
+        Please note this ID to track your complaint status. An SMS confirmation will be sent to your mobile number.
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 2: TRACK ===== -->
+  <div class="tab-panel" id="tab-track">
+    <div class="card">
+      <div class="card-title">Track Your Complaint</div>
+      <div class="track-box">
+        <p style="font-size:13px;color:#666;margin-bottom:16px;">Enter your Complaint ID (received at the time of submission) to check the current status and progress.</p>
+        <div class="track-input-row">
+          <input type="text" id="trackID" placeholder="e.g. PWD-2026-00004" />
+          <button class="track-btn" onclick="trackComplaint()">Track →</button>
+        </div>
+        <div class="track-result" id="trackResult"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 3: PUBLIC BOARD ===== -->
+  <div class="tab-panel" id="tab-public">
+    <div class="card">
+      <div class="card-title">Public Complaint Board</div>
+      <p style="font-size:13px;color:#666;margin-bottom:18px;">All complaints filed by citizens are listed below. Personal contact details are kept private for privacy.</p>
+
+      <div class="filter-row">
+        <input type="text" id="pubSearch" placeholder="🔍 Search by ID, location, category..." oninput="renderTable()" />
+        <select id="pubStatus" onchange="renderTable()">
+          <option value="">All Statuses</option>
+          <option value="Pending">Pending</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Resolved">Resolved</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+        <select id="pubDistrict" onchange="renderTable()">
+          <option value="">All Districts</option>
+          <option>Dehradun</option>
+          <option>Haridwar</option>
+          <option>Nainital</option>
+          <option>Udham Singh Nagar</option>
+          <option>Almora</option>
+          <option>Chamoli</option>
+          <option>Pauri Garhwal</option>
+          <option>Tehri Garhwal</option>
+          <option>Uttarkashi</option>
+        </select>
+        <select id="pubCategory" onchange="renderTable()">
+          <option value="">All Categories</option>
+          <option>Road Damage / Pothole</option>
+          <option>Bridge Condition</option>
+          <option>Government Building Issue</option>
+          <option>Illegal Road Cutting</option>
+          <option>Drainage / Waterlogging</option>
+          <option>Contractor Negligence</option>
+          <option>Corruption / Bribery</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table class="complaints-table">
+          <thead>
+            <tr>
+              <th>Complaint ID</th>
+              <th>Date Filed</th>
+              <th>District</th>
+              <th>Category</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Last Updated</th>
+            </tr>
+          </thead>
+          <tbody id="publicTableBody"></tbody>
+        </table>
+      </div>
+
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+
+</div><!-- end portal-wrap -->
+
+<!-- FOOTER -->
+<footer>
+  Content Owned by <strong>Public Works Department, Government of Uttarakhand</strong> &nbsp;|&nbsp;
+  <a href="index.html">← Back to Main Site</a>
+  <a href="#">Help</a>
+  <a href="#">Website Policies</a>
+</footer>
+
+<script src="../nagrik_prefill.js"></script>
+<script src="complaint.js"></script>
+
+<!-- Hash-based deep linking: opens the correct tab if URL has #tab-track or #tab-public -->
+<script>
+  (function () {
+    const hash = window.location.hash; // e.g. "#tab-track"
+    if (hash && hash !== '#tab-file') {
+      const targetPanel = document.querySelector(hash);
+      const targetBtn   = document.querySelector('#btn-' + hash.slice(1)); // "#btn-tab-track"
+      if (targetPanel && targetBtn) {
+        // Deactivate defaults
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.main-tab').forEach(b => b.classList.remove('active'));
+        // Activate target
+        targetPanel.classList.add('active');
+        targetBtn.classList.add('active');
+        // Scroll to tabs smoothly
+        setTimeout(() => targetPanel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      }
+    }
+  })();
+</script>
+
+</body>
+</html>

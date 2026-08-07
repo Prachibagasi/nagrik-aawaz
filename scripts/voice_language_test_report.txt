@@ -1,0 +1,5 @@
+code	language	status	transcript
+hi	Hindi	PASS	हमारे अलाके में दो दिन से पानी की आपुरती बन्द है.
+en	English	PASS	There is no water supply in our area for two days.
+ta	Tamil	PASS	எங்கள் பகுதியில் இரண்டு நாட்களாகக்கு தண்ணீர் வரவில்லை.
+mr	Marathi	PASS	आम्चा बहगा दों दिवसांपासुन पानिपुरोथा बन्दा है.

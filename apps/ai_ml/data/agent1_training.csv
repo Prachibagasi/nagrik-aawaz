@@ -1,0 +1,456 @@
+text,department,subcategory
+total blackout here,Electricity,No Power Supply
+grid failure in my colony,Electricity,No Power Supply
+transformer blasted no power,Electricity,No Power Supply
+everything is dark since 2pm,Electricity,No Power Supply
+electricity cut off without notice,Electricity,No Power Supply
+load shedding for 5 hours,Electricity,No Power Supply
+darkness on my street,Electricity,No Power Supply
+no current in the house,Electricity,No Power Supply
+power line snapped due to wind,Electricity,No Power Supply
+supply disconnected suddenly,Electricity,No Power Supply
+phase missing in our block,Electricity,No Power Supply
+entire neighborhood has no lights,Electricity,No Power Supply
+when will power return,Electricity,No Power Supply
+unannounced power cut today,Electricity,No Power Supply
+electricity interrupted since storm,Electricity,No Power Supply
+lights flickering and then gone,Electricity,No Power Supply
+waiting for electricity to come back,Electricity,No Power Supply
+power supply dead,Electricity,No Power Supply
+no electricity for past two days,Electricity,No Power Supply
+inverter drained due to long cut,Electricity,No Power Supply
+bulbs burning out due to high volts,Electricity,Voltage Issue
+dim lights everywhere,Electricity,Voltage Issue
+voltage jumping up and down,Electricity,Voltage Issue
+AC not starting due to low voltage,Electricity,Voltage Issue
+voltage stabilizer showing red,Electricity,Voltage Issue
+fridge making weird noise voltage issue,Electricity,Voltage Issue
+constant surge in electricity,Electricity,Voltage Issue
+voltage drop is affecting motors,Electricity,Voltage Issue
+erratic power supply damaging PC,Electricity,Voltage Issue
+low voltage in one phase,Electricity,Voltage Issue
+high voltage fried my TV,Electricity,Voltage Issue
+partial power supply low voltage,Electricity,Voltage Issue
+voltage levels are extremely poor,Electricity,Voltage Issue
+fan moving very slowly,Electricity,Voltage Issue
+dangerously high voltage levels,Electricity,Voltage Issue
+voltage dip at night,Electricity,Voltage Issue
+electricity bill jumped 5 times,Electricity,Wrong Bill
+received a bill for 10000 incorrectly,Electricity,Wrong Bill
+paid bill but still showing arrears,Electricity,Wrong Bill
+wrong tariff applied to my bill,Electricity,Wrong Bill
+previous month balance not adjusted,Electricity,Wrong Bill
+bill issued without reading,Electricity,Wrong Bill
+inflated electricity bill,Electricity,Wrong Bill
+mismatch in units consumed,Electricity,Wrong Bill
+huge bill for empty house,Electricity,Wrong Bill
+bill date expired before delivery,Electricity,Wrong Bill
+commercial rate on residential bill,Electricity,Wrong Bill
+why is my bill so high this month,Electricity,Wrong Bill
+faulty calculation in bill,Electricity,Wrong Bill
+duplicate bill received,Electricity,Wrong Bill
+penalty charged wrongly,Electricity,Wrong Bill
+meter screen is blank,Electricity,Meter Fault
+meter running too fast,Electricity,Meter Fault
+sparks coming from the meter,Electricity,Meter Fault
+meter box seal broken,Electricity,Meter Fault
+digital meter not showing digits,Electricity,Meter Fault
+burned out electricity meter,Electricity,Meter Fault
+meter is making buzzing sound,Electricity,Meter Fault
+external meter reading doesn't match,Electricity,Meter Fault
+request for meter replacement,Electricity,Meter Fault
+smart meter stopped syncing,Electricity,Meter Fault
+meter bypass issue,Electricity,Meter Fault
+lightning damaged my meter,Electricity,Meter Fault
+old analog meter needs upgrade,Electricity,Meter Fault
+meter reading stuck at same number,Electricity,Meter Fault
+water entering the meter box,Electricity,Meter Fault
+street lamp is on during daytime,Electricity,Street Light Issue
+main road light post leaning over,Electricity,Street Light Issue
+dark spots on the highway,Electricity,Street Light Issue
+unsafe to walk no street lights,Electricity,Street Light Issue
+street light wires hanging low,Electricity,Street Light Issue
+all street lights in sector 4 are off,Electricity,Street Light Issue
+pole number 45 light is out,Electricity,Street Light Issue
+frequent flickering of park lights,Electricity,Street Light Issue
+street light cover is broken,Electricity,Street Light Issue
+newly installed street light not working,Electricity,Street Light Issue
+dark alleyways need lighting,Electricity,Street Light Issue
+short circuit in street light pole,Electricity,Street Light Issue
+street light sensor failed,Electricity,Street Light Issue
+community lights need maintenance,Electricity,Street Light Issue
+no water in the overhead tank,Water,Water Supply Disruption
+dry taps for three days,Water,Water Supply Disruption
+water motor not lifting water,Water,Water Supply Disruption
+supply timing is very erratic,Water,Water Supply Disruption
+no municipal water today,Water,Water Supply Disruption
+water cut due to repair work,Water,Water Supply Disruption
+entire society has no water,Water,Water Supply Disruption
+pump failure at water works,Water,Water Supply Disruption
+we are buying tankers no supply,Water,Water Supply Disruption
+scheduled water cut extended,Water,Water Supply Disruption
+no water in kitchen or bathroom,Water,Water Supply Disruption
+morning supply was skipped,Water,Water Supply Disruption
+water supply valve is closed,Water,Water Supply Disruption
+haven't showered no water,Water,Water Supply Disruption
+emergency water shortage,Water,Water Supply Disruption
+water gushing out on the street,Water,Pipe Leakage / Burst
+main line burst near market,Water,Pipe Leakage / Burst
+underground pipe leaking into basement,Water,Pipe Leakage / Burst
+joint leak in water connection,Water,Pipe Leakage / Burst
+waste of water due to pipe crack,Water,Pipe Leakage / Burst
+huge puddle from leaking valve,Water,Pipe Leakage / Burst
+pipe smashed during road work,Water,Pipe Leakage / Burst
+slow drip from main supply pipe,Water,Pipe Leakage / Burst
+visible crack in water main,Water,Pipe Leakage / Burst
+water pressure low due to leaks,Water,Pipe Leakage / Burst
+pipeline rusting and leaking,Water,Pipe Leakage / Burst
+fountain of water from broken pipe,Water,Pipe Leakage / Burst
+repair team needed for burst pipe,Water,Pipe Leakage / Burst
+soaking wet road from pipe leak,Water,Pipe Leakage / Burst
+water leakage near fire hydrant,Water,Pipe Leakage / Burst
+received water bill for 5000,Water,Billing Dispute
+bill showing usage from last year,Water,Billing Dispute
+dispute regarding water meter charges,Water,Billing Dispute
+payment not updated in water bill,Water,Billing Dispute
+meter reader never came but bill sent,Water,Billing Dispute
+wrong name on water bill,Water,Billing Dispute
+excessive sewage tax in water bill,Water,Billing Dispute
+adjustment needed in water charges,Water,Billing Dispute
+illegal water connection charges on bill,Water,Billing Dispute
+average billing is too high,Water,Billing Dispute
+request for water bill correction,Water,Billing Dispute
+bill sent to wrong address,Water,Billing Dispute
+unreasonable water tax,Water,Billing Dispute
+bill showing double consumption,Water,Billing Dispute
+late fee charged unfairly,Water,Billing Dispute
+water looks yellow today,Water,Water Quality Issue
+sand coming out with water,Water,Water Quality Issue
+smell of chlorine is too strong,Water,Water Quality Issue
+dead insects in water supply,Water,Water Quality Issue
+water is oily and sticky,Water,Water Quality Issue
+sewage mixing with drinking water,Water,Water Quality Issue
+rusty water from old pipes,Water,Water Quality Issue
+kids falling sick due to water,Water,Water Quality Issue
+water is not fit for washing clothes,Water,Water Quality Issue
+salty water coming from tap,Water,Water Quality Issue
+black particles in water,Water,Water Quality Issue
+supply water is very hard,Water,Water Quality Issue
+algae seen in tap water,Water,Water Quality Issue
+chemical smell in water supply,Water,Water Quality Issue
+water needs heavy filtering,Water,Water Quality Issue
+trickle of water in the shower,Water,Low Water Pressure
+takes an hour to fill a bucket,Water,Low Water Pressure
+pressure is too low for geyser,Water,Low Water Pressure
+second floor gets no water,Water,Low Water Pressure
+water pressure dropped after 9am,Water,Low Water Pressure
+suction pump not working low pressure,Water,Low Water Pressure
+low flow in the main line,Water,Low Water Pressure
+need a booster for this pressure,Water,Low Water Pressure
+pressure issue in the entire block,Water,Low Water Pressure
+half inch pipe giving low output,Water,Low Water Pressure
+weakest water flow I have seen,Water,Low Water Pressure
+taps just dripping,Water,Low Water Pressure
+very poor water force,Water,Low Water Pressure
+pressure not enough for washing machine,Water,Low Water Pressure
+intermittent water pressure,Water,Low Water Pressure
+stink from the open drain,Water,Sewage / Drainage Problem
+manhole is overflowing,Water,Sewage / Drainage Problem
+sewer line is choked,Water,Sewage / Drainage Problem
+dirty water backing up in toilet,Water,Sewage / Drainage Problem
+drainage water flooding the park,Water,Sewage / Drainage Problem
+mosquitoes breeding in stagnant sewage,Water,Sewage / Drainage Problem
+sewer pipe broken underground,Water,Sewage / Drainage Problem
+foul smell from the gutter,Water,Sewage / Drainage Problem
+sludge coming out of drain,Water,Sewage / Drainage Problem
+clogged sewer causing road block,Water,Sewage / Drainage Problem
+gutter cleaning needed urgently,Water,Sewage / Drainage Problem
+drainage lid is missing,Water,Sewage / Drainage Problem
+sewage water entering my garden,Water,Sewage / Drainage Problem
+main sewer line blocked,Water,Sewage / Drainage Problem
+rainwater mixed with sewage on road,Water,Sewage / Drainage Problem
+car got damaged in a pothole,PWD,Road Damage / Pothole
+road surface is completely peeled off,PWD,Road Damage / Pothole
+bumps on road causing accidents,PWD,Road Damage / Pothole
+unpaved road causing dust,PWD,Road Damage / Pothole
+new road washed away in rain,PWD,Road Damage / Pothole
+gravel flying from broken road,PWD,Road Damage / Pothole
+dangerous crater on the main road,PWD,Road Damage / Pothole
+road looks like a moon surface,PWD,Road Damage / Pothole
+potholes making bike rides risky,PWD,Road Damage / Pothole
+road patch work is failing,PWD,Road Damage / Pothole
+deep ruts on the highway,PWD,Road Damage / Pothole
+loose stones on the turn,PWD,Road Damage / Pothole
+road leveling required,PWD,Road Damage / Pothole
+sinkhole forming on the street,PWD,Road Damage / Pothole
+asphalt is melting/cracking,PWD,Road Damage / Pothole
+shaking felt while driving on bridge,PWD,Bridge Condition
+bridge railing is broken,PWD,Bridge Condition
+expansion joints of bridge are wide,PWD,Bridge Condition
+bridge pillars look weak,PWD,Bridge Condition
+rusted iron rods visible on bridge,PWD,Bridge Condition
+flyover has huge cracks,PWD,Bridge Condition
+bridge deck is uneven,PWD,Bridge Condition
+vibrations on the overpass,PWD,Bridge Condition
+footbridge is swaying,PWD,Bridge Condition
+water pooling on top of bridge,PWD,Bridge Condition
+bridge supports show erosion,PWD,Bridge Condition
+concrete falling from flyover,PWD,Bridge Condition
+bridge load limit being ignored,PWD,Bridge Condition
+old arch bridge is crumbling,PWD,Bridge Condition
+potholes on the flyover,PWD,Bridge Condition
+drainage pipes on road are blocked,PWD,Drainage / Waterlogging
+knee deep water after shower,PWD,Drainage / Waterlogging
+no outlet for rainwater,PWD,Drainage / Waterlogging
+road submerged for 10 hours,PWD,Drainage / Waterlogging
+culvert is choked with plastic,PWD,Drainage / Waterlogging
+water logging in front of hospital,PWD,Drainage / Waterlogging
+drainage slope is incorrect,PWD,Drainage / Waterlogging
+stormwater drain not cleaned,PWD,Drainage / Waterlogging
+street becomes a river in rain,PWD,Drainage / Waterlogging
+basements flooding from road water,PWD,Drainage / Waterlogging
+sewerage and rainwater mixing,PWD,Drainage / Waterlogging
+mosquito menace due to waterlogging,PWD,Drainage / Waterlogging
+road impassable due to floods,PWD,Drainage / Waterlogging
+cleaning of roadside drains needed,PWD,Drainage / Waterlogging
+water logging near metro station,PWD,Drainage / Waterlogging
+stop sign is missing at junction,PWD,Streetlight / Road Marking
+no cat-eyes on the highway,PWD,Streetlight / Road Marking
+speed breaker not painted,PWD,Streetlight / Road Marking
+lane markings are invisible,PWD,Streetlight / Road Marking
+directional signs are broken,PWD,Streetlight / Road Marking
+no board for school zone,PWD,Streetlight / Road Marking
+one-way sign is hidden by tree,PWD,Streetlight / Road Marking
+need reflectors on the sharp turn,PWD,Streetlight / Road Marking
+center line of road is gone,PWD,Streetlight / Road Marking
+wrong sign board installed,PWD,Streetlight / Road Marking
+no light on the pedestrian crossing,PWD,Streetlight / Road Marking
+hazard signs are not visible,PWD,Streetlight / Road Marking
+need a signboard for dead end,PWD,Streetlight / Road Marking
+reflective tape missing on poles,PWD,Streetlight / Road Marking
+no marking for disabled parking,PWD,Streetlight / Road Marking
+stalls on the sidewalk,PWD,Encroachment on Road
+pavement occupied by vendors,PWD,Encroachment on Road
+construction material on road,PWD,Encroachment on Road
+cars parked permanently on street,PWD,Encroachment on Road
+illegal fence on public land,PWD,Encroachment on Road
+shops extending onto the road,PWD,Encroachment on Road
+stairs built on the footpath,PWD,Encroachment on Road
+hoardings blocking the view,PWD,Encroachment on Road
+temple/shrine built on road,PWD,Encroachment on Road
+unauthorized parking lot,PWD,Encroachment on Road
+road narrowed by illegal kiosks,PWD,Encroachment on Road
+dumpster blocking the lane,PWD,Encroachment on Road
+illegal extension of house front,PWD,Encroachment on Road
+hawkers blocking traffic flow,PWD,Encroachment on Road
+footpath not for walking anymore,PWD,Encroachment on Road
+utility company left road dug up,PWD,Illegal Road Cutting
+unfilled trench on the road,PWD,Illegal Road Cutting
+cable laying without permission,PWD,Illegal Road Cutting
+road cut for private water pipe,PWD,Illegal Road Cutting
+dangerous ditch on road side,PWD,Illegal Road Cutting
+contractor left debris after cutting,PWD,Illegal Road Cutting
+illegal excavation on highway,PWD,Illegal Road Cutting
+gas line digging without permit,PWD,Illegal Road Cutting
+road surface destroyed by JCB,PWD,Illegal Road Cutting
+pipeline work finished but road not fixed,PWD,Illegal Road Cutting
+unauthorized hole in the street,PWD,Illegal Road Cutting
+road cutting for wedding tent,PWD,Illegal Road Cutting
+freshly laid road being dug again,PWD,Illegal Road Cutting
+fiber optic cable digging issue,PWD,Illegal Road Cutting
+manhole cover left open after work,PWD,Illegal Road Cutting
+tar layer is too thin,PWD,Contractor Negligence
+road started cracking in a week,PWD,Contractor Negligence
+no steam roller used for leveling,PWD,Contractor Negligence
+shoddy work on the footpath,PWD,Contractor Negligence
+contractor disappeared mid-work,PWD,Contractor Negligence
+using poor stones for road base,PWD,Contractor Negligence
+material quality is very low,PWD,Contractor Negligence
+road slope is wrong water stays,PWD,Contractor Negligence
+speed breaker is too high/sharp,PWD,Contractor Negligence
+paver blocks coming off,PWD,Contractor Negligence
+work delayed by 6 months,PWD,Contractor Negligence
+unsafe construction site no signs,PWD,Contractor Negligence
+waste material dumped in park,PWD,Contractor Negligence
+contractor not following blueprint,PWD,Contractor Negligence
+unfinished repair work is dangerous,PWD,Contractor Negligence
+JE asking for money to pass file,PWD,Corruption / Bribery
+money embezzled in road fund,PWD,Corruption / Bribery
+tender awarded to family member,PWD,Corruption / Bribery
+bribe for new water connection,PWD,Corruption / Bribery
+official taking commission,PWD,Corruption / Bribery
+fake billing for road repair,PWD,Corruption / Bribery
+pay extra for faster service,PWD,Corruption / Bribery
+contractor and engineer are hand in glove,PWD,Corruption / Bribery
+huge scam in bridge construction,PWD,Corruption / Bribery
+official demanded money for NOC,PWD,Corruption / Bribery
+bribery for regularizing encroachment,PWD,Corruption / Bribery
+funds misused for personal gain,PWD,Corruption / Bribery
+clerk asking for gift/cash,PWD,Corruption / Bribery
+corruption in street light tender,PWD,Corruption / Bribery
+money taken but no work done,PWD,Corruption / Bribery
+garbage truck hasn't come,PWD,Garbage / Sanitation Issue
+dead animal lying on road,PWD,Garbage / Sanitation Issue
+stench from the trash pile,PWD,Garbage / Sanitation Issue
+people throwing waste in open,PWD,Garbage / Sanitation Issue
+dustbins are broken and leaking,PWD,Garbage / Sanitation Issue
+medical waste dumped in public,PWD,Garbage / Sanitation Issue
+burning of garbage causing smoke,PWD,Garbage / Sanitation Issue
+littering in the public park,PWD,Garbage / Sanitation Issue
+waste collection irregular,PWD,Garbage / Sanitation Issue
+heaps of plastic on the street,PWD,Garbage / Sanitation Issue
+sanitation worker not cleaning drain,PWD,Garbage / Sanitation Issue
+public toilet is very dirty,PWD,Garbage / Sanitation Issue
+cleaning staff demanding extra money,PWD,Garbage / Sanitation Issue
+no dustbins on the main road,PWD,Garbage / Sanitation Issue
+road sweeping not done daily,PWD,Garbage / Sanitation Issue
+teacher using bad language,Education,Teacher Misconduct
+teacher hitting students,Education,Teacher Misconduct
+discrimination by class teacher,Education,Teacher Misconduct
+teacher always on mobile phone,Education,Teacher Misconduct
+favoritism in the classroom,Education,Teacher Misconduct
+teacher absent from class daily,Education,Teacher Misconduct
+harassment by school staff,Education,Teacher Misconduct
+teacher sleeping in class,Education,Teacher Misconduct
+unprofessional behavior during PTA,Education,Teacher Misconduct
+bullying by a senior teacher,Education,Teacher Misconduct
+teacher forcing private tuition,Education,Teacher Misconduct
+misleading students with wrong info,Education,Teacher Misconduct
+biased grading by teacher,Education,Teacher Misconduct
+teacher arrives late every day,Education,Teacher Misconduct
+disrespectful attitude towards parents,Education,Teacher Misconduct
+pending arrears for 3 months,Education,Salary / Pay Dispute
+salary deducted without reason,Education,Salary / Pay Dispute
+bonus not paid yet,Education,Salary / Pay Dispute
+salary slip not provided,Education,Salary / Pay Dispute
+minimum wage not being paid,Education,Salary / Pay Dispute
+PF not deposited in account,Education,Salary / Pay Dispute
+increment not implemented,Education,Salary / Pay Dispute
+salary lower than contract,Education,Salary / Pay Dispute
+delayed payment for guest faculty,Education,Salary / Pay Dispute
+salary held back by principal,Education,Salary / Pay Dispute
+issue with pay scale fix,Education,Salary / Pay Dispute
+unpaid leave deducted wrongly,Education,Salary / Pay Dispute
+discrepancy in the salary amount,Education,Salary / Pay Dispute
+retired teacher pension delayed,Education,Salary / Pay Dispute
+salary check bounced,Education,Salary / Pay Dispute
+leaking roof in classroom,Education,School Infrastructure Problem
+no drinking water in school,Education,School Infrastructure Problem
+toilets are not usable,Education,School Infrastructure Problem
+no fans in the school hall,Education,School Infrastructure Problem
+boundary wall has collapsed,Education,School Infrastructure Problem
+school playground is a mess,Education,School Infrastructure Problem
+no benches for students,Education,School Infrastructure Problem
+broken windows in winter,Education,School Infrastructure Problem
+electricity wires exposed in school,Education,School Infrastructure Problem
+lack of labs and equipment,Education,School Infrastructure Problem
+library has no books,Education,School Infrastructure Problem
+no ramp for disabled students,Education,School Infrastructure Problem
+school gate is broken,Education,School Infrastructure Problem
+dilapidated building danger to kids,Education,School Infrastructure Problem
+overcrowded classrooms no space,Education,School Infrastructure Problem
+insects found in school lunch,Education,Mid-Day Meal Complaint
+meal quantity is too less,Education,Mid-Day Meal Complaint
+rice not cooked properly,Education,Mid-Day Meal Complaint
+no milk or eggs provided,Education,Mid-Day Meal Complaint
+kitchen area is unhygienic,Education,Mid-Day Meal Complaint
+stale food served to children,Education,Mid-Day Meal Complaint
+food poisoning after school meal,Education,Mid-Day Meal Complaint
+mid day meal worker not paid,Education,Mid-Day Meal Complaint
+discrimination in food serving,Education,Mid-Day Meal Complaint
+watery dal served in meal,Education,Mid-Day Meal Complaint
+irregular distribution of food,Education,Mid-Day Meal Complaint
+no plates for eating meal,Education,Mid-Day Meal Complaint
+raw materials for meal are rotten,Education,Mid-Day Meal Complaint
+mid day meal scheme stopped,Education,Mid-Day Meal Complaint
+unauthorized people eating school food,Education,Mid-Day Meal Complaint
+marksheet has spelling errors,Education,Examination Related
+admit card not issued,Education,Examination Related
+out of syllabus questions in exam,Education,Examination Related
+mass cheating in exam center,Education,Examination Related
+re-evaluation request ignored,Education,Examination Related
+paper leak before exam,Education,Examination Related
+wrong roll number on result,Education,Examination Related
+exam center is too far,Education,Examination Related
+lack of invigilators during test,Education,Examination Related
+technical glitch in online exam,Education,Examination Related
+result portal not working,Education,Examination Related
+mismatch in internal marks,Education,Examination Related
+exam postponed without notice,Education,Examination Related
+supplementary exam date not out,Education,Examination Related
+unfair means used by topper,Education,Examination Related
+donations demanded for seat,Education,Scholarship / Fee Issue
+scholarship portal showing error,Education,Scholarship / Fee Issue
+hidden charges in school fee,Education,Scholarship / Fee Issue
+refund of caution money pending,Education,Scholarship / Fee Issue
+late fee fine is too high,Education,Scholarship / Fee Issue
+caste certificate rejected for scholarship,Education,Scholarship / Fee Issue
+forced to buy uniform from school,Education,Scholarship / Fee Issue
+fee hike without approval,Education,Scholarship / Fee Issue
+minority scholarship not credited,Education,Scholarship / Fee Issue
+bank details mismatch for scholarship,Education,Scholarship / Fee Issue
+annual fee charged twice,Education,Scholarship / Fee Issue
+no receipt given for fees,Education,Scholarship / Fee Issue
+scholarship amount is less than promised,Education,Scholarship / Fee Issue
+tuition fee increased mid-year,Education,Scholarship / Fee Issue
+issue with EWS category fees,Education,Scholarship / Fee Issue
+denied admission due to age,Education,Admission Problem
+online application form not loading,Education,Admission Problem
+school asking for birth certificate only,Education,Admission Problem
+no response from admission office,Education,Admission Problem
+merit list not displayed,Education,Admission Problem
+admission cancelled without reason,Education,Admission Problem
+waiting list not moving,Education,Admission Problem
+transfer certificate not accepted,Education,Admission Problem
+admission process is not transparent,Education,Admission Problem
+limited seats for local residents,Education,Admission Problem
+error in the selection criteria,Education,Admission Problem
+last date for admission passed,Education,Admission Problem
+interview behavior was rude,Education,Admission Problem
+documents lost by school office,Education,Admission Problem
+admission fee is non-refundable,Education,Admission Problem
+wrong language books given,Education,Text Book / Material Unavailability
+stationery not available in store,Education,Text Book / Material Unavailability
+notebooks are of poor quality,Education,Text Book / Material Unavailability
+bag not provided under scheme,Education,Text Book / Material Unavailability
+shortage of science kits,Education,Text Book / Material Unavailability
+teachers don't have manuals,Education,Text Book / Material Unavailability
+digital books not accessible,Education,Text Book / Material Unavailability
+delay in free book distribution,Education,Text Book / Material Unavailability
+school demanding money for free books,Education,Text Book / Material Unavailability
+not enough maps or globes,Education,Text Book / Material Unavailability
+sports equipment missing,Education,Text Book / Material Unavailability
+blackboard needs repainting,Education,Text Book / Material Unavailability
+chalk and duster shortage,Education,Text Book / Material Unavailability
+broken laboratory glassware,Education,Text Book / Material Unavailability
+missing pages in the textbook,Education,Text Book / Material Unavailability
+computer lab is always locked,Education,Digital Device / Internet Issue
+tablets not distributed to students,Education,Digital Device / Internet Issue
+server down during online class,Education,Digital Device / Internet Issue
+no charging points in class,Education,Digital Device / Internet Issue
+broken keyboards in computer lab,Education,Digital Device / Internet Issue
+projector not working in AV room,Education,Digital Device / Internet Issue
+internet speed is very slow,Education,Digital Device / Internet Issue
+software not updated on PCs,Education,Digital Device / Internet Issue
+no IT teacher available,Education,Digital Device / Internet Issue
+smart board has no power,Education,Digital Device / Internet Issue
+laptop battery dead,Education,Digital Device / Internet Issue
+e-learning portal password reset,Education,Digital Device / Internet Issue
+technical support not helping,Education,Digital Device / Internet Issue
+student tablets have cracked screens,Education,Digital Device / Internet Issue
+firewall blocking study sites,Education,Digital Device / Internet Issue
+mobile network signal is weak,Other,Other
+app keeps crashing,Other,Other
+unable to login to portal,Other,Other
+address not updated in records,Other,Other
+complaint status not showing,Other,Other
+website is under maintenance,Other,Other
+customer care not picking up,Other,Other
+verification code not received,Other,Other
+wrong location on map,Other,Other
+feedback form not working,Other,Other
+general inquiry about services,Other,Other
+request for a new feature,Other,Other
+portal is very slow,Other,Other
+missing information on website,Other,Other
+unauthorized access to account,Other,Other
