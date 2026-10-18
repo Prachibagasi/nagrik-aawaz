@@ -112,6 +112,11 @@ const MIN_RECORD_MS = 3000
       const voiceStub = !!data.stub_transcript
       const transcriptionFailed = !!data.transcription_failed
 
+      if (voiceStub) {
+        setError('Speech-to-text is not installed on the backend yet. Your recording was received, but no transcript was created. Use “Skip voice — type complaint instead” to continue.')
+        return
+      }
+
       if (transcriptionFailed && !voiceStub) {
         setError(
           data.user_message ||
@@ -187,6 +192,10 @@ const MIN_RECORD_MS = 3000
       const t = (data.transcript || '').trim()
       const voiceStub = !!data.stub_transcript
       const transcriptionFailed = !!data.transcription_failed
+      if (voiceStub) {
+        setError('Speech-to-text is not installed on the backend yet. This recording remains in your offline queue; use “Skip voice — type complaint instead” to continue.')
+        return
+      }
       if (transcriptionFailed && !voiceStub) {
         setError(data.user_message || 'Could not transcribe queued recording. Try again.')
         return
@@ -374,9 +383,8 @@ const MIN_RECORD_MS = 3000
       <h1 className="page-title">Voice complaint</h1>
       <p className="muted" style={{ marginBottom: 24 }}>
         Record from your microphone, upload a file, or queue for offline sync (IndexedDB). After transcribe, you’re taken
-        to <strong>New complaint</strong> with the text filled in. If the server does not have Whisper installed, the text
-        will be a short placeholder — edit it or install <code style={{ fontSize: 13 }}>openai-whisper</code> on the backend
-        for real STT.
+        to <strong>New complaint</strong> with the text filled in. Real speech-to-text requires Whisper to be installed
+        on the backend; if it is unavailable, the page will tell you to continue by typing instead.
       </p>
       <form className="glass-card" onSubmit={transcribe}>
         {error ? <div className="error-banner">{error}</div> : null}

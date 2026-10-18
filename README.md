@@ -111,6 +111,16 @@ npm run dev                          # http://127.0.0.1:5173
 
 `npm run dev` proxies `/api` requests to `http://127.0.0.1:8000`. Set `VITE_BACKEND_URL` in `.env.local` if your backend runs elsewhere.
 
+### Department demo portals
+
+In a third terminal, serve the standalone department sites used by Agent1's **Open department portal** action:
+
+```powershell
+python scripts/serve_department_portals.py  # http://127.0.0.1:5500
+```
+
+This server binds to localhost and serves only the four department-site folders. The Nagrik Aawaz API's **Submit to department API** action uses Django directly and does not depend on this static server.
+
 ### Running tests
 
 ```bash
@@ -131,6 +141,8 @@ Backend (`.env` in project root):
 | `SMS_PROVIDER` / `TWILIO_*` | No | — | SMS OTP delivery (dev mode returns OTP in the API response instead) |
 | `FIREBASE_CREDENTIALS_PATH` | No | — | Push notification delivery |
 | `GOOGLE_MAPS_API_KEY` | No | — | Location features |
+| `DEPARTMENT_PORTAL_BASE` | No | `http://127.0.0.1:5500` | Base URL for Agent1's standalone portal links |
+| `DEPARTMENT_DATA_DIR` | No | — | JSON storage path for demo department API data; use `backend/data` in this repository |
 | `DB_NAME` / `DB_USER` / `DB_PASSWORD` / `DB_HOST` / `DB_PORT` | Production only | — | PostgreSQL connection (dev uses SQLite automatically) |
 | `USE_S3` / `AWS_*` | No | `False` | S3-backed media storage |
 
