@@ -1,2 +1,4 @@
 -r requirements.txt
+-r requirements/base.txt
 pytest>=7.4
+pytest-django>=4.8

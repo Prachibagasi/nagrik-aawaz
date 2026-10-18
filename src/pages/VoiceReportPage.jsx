@@ -111,6 +111,7 @@ const MIN_RECORD_MS = 3000
       const t = (data.transcript || '').trim()
       const voiceStub = !!data.stub_transcript
       const transcriptionFailed = !!data.transcription_failed
+      const englishTranslation = data.english_translation || ''
 
       if (voiceStub) {
         setError('Speech-to-text is not installed on the backend yet. Your recording was received, but no transcript was created. Use “Skip voice — type complaint instead” to continue.')
@@ -140,6 +141,7 @@ const MIN_RECORD_MS = 3000
           'awaaz_voice_new_complaint',
           JSON.stringify({
             transcript: t,
+            englishTranslation,
             lang: langForForm,
             voiceStub,
             transcriptionFailed,
@@ -152,6 +154,7 @@ const MIN_RECORD_MS = 3000
       navigate('/complaints/new', {
         state: {
           transcript: t,
+          englishTranslation,
           lang: langForForm,
           voiceStub,
           transcriptionFailed,
@@ -192,6 +195,7 @@ const MIN_RECORD_MS = 3000
       const t = (data.transcript || '').trim()
       const voiceStub = !!data.stub_transcript
       const transcriptionFailed = !!data.transcription_failed
+      const englishTranslation = data.english_translation || ''
       if (voiceStub) {
         setError('Speech-to-text is not installed on the backend yet. This recording remains in your offline queue; use “Skip voice — type complaint instead” to continue.')
         return
@@ -208,13 +212,13 @@ const MIN_RECORD_MS = 3000
       try {
         sessionStorage.setItem(
           'awaaz_voice_new_complaint',
-          JSON.stringify({ transcript: t, lang, voiceStub, transcriptionFailed, at: Date.now() }),
+          JSON.stringify({ transcript: t, englishTranslation, lang, voiceStub, transcriptionFailed, at: Date.now() }),
         )
       } catch {
         /* ignore */
       }
       navigate('/complaints/new', {
-        state: { transcript: t, lang, voiceStub, transcriptionFailed, fromVoice: true },
+        state: { transcript: t, englishTranslation, lang, voiceStub, transcriptionFailed, fromVoice: true },
       })
     } catch (err) {
       setError(err.message || 'Sync failed — try again when online.')

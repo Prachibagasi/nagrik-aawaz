@@ -114,6 +114,7 @@ class ComplaintCreateSerializer(serializers.ModelSerializer):
         write_only=True,
         required=False,
     )
+    english_translation = serializers.CharField(required=False, allow_blank=True, write_only=True)
 
     class Meta:
         model = Complaint
@@ -123,6 +124,7 @@ class ComplaintCreateSerializer(serializers.ModelSerializer):
             "latitude", "longitude", "address", "ward", "city", "pincode",
             "source", "is_anonymous",
             "attachments",
+            "english_translation",
         ]
 
     def validate_description_language(self, value):
@@ -144,6 +146,7 @@ class ComplaintCreateSerializer(serializers.ModelSerializer):
         from apps.ai_ml.services.classifier import classify_text
 
         attachment_files = validated_data.pop("attachments", [])
+        english_translation = (validated_data.pop("english_translation", "") or "").strip()
         user = self.context["request"].user if not validated_data.get("is_anonymous") else None
         complaint = Complaint.objects.create(user=user, **validated_data)
 
@@ -159,9 +162,9 @@ class ComplaintCreateSerializer(serializers.ModelSerializer):
                 uploaded_by=self.context["request"].user,
             )
 
-        text = (complaint.description or "").strip()
+        text = english_translation or (complaint.description or "").strip()
         if text:
-            result = classify_text(text, complaint.description_language or "hi")
+            result = classify_text(text, "en" if english_translation else (complaint.description_language or "hi"))
             complaint.urgency_score = float(result.get("urgency_score") or 0)
             sp = result.get("suggested_priority")
             if sp in dict(Complaint.PRIORITY_CHOICES) and complaint.priority == "normal":
@@ -176,9 +179,11 @@ class ComplaintCreateSerializer(serializers.ModelSerializer):
                     complaint.ai_category_confidence = float(result.get("confidence") or 0)
                     update_fields.extend(["category", "ai_category_confidence"])
 
-            # Light “official language” stub for demo (translate service can replace later)
-            if (complaint.description_language or "en") != "en":
-                complaint.description_translated = f"[EN] {complaint.description}"
+            if english_translation:
+                complaint.description_translated = english_translation
+                update_fields.append("description_translated")
+            elif (complaint.description_language or "en") == "en":
+                complaint.description_translated = complaint.description
                 update_fields.append("description_translated")
 
             complaint.save(update_fields=list(dict.fromkeys(update_fields)))

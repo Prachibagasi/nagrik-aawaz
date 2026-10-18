@@ -31,6 +31,7 @@ export default function NewComplaintPage() {
   const [searchParams] = useSearchParams()
   const [categories, setCategories] = useState([])
   const [categoriesLoadFailed, setCategoriesLoadFailed] = useState(false)
+  const [englishTranslation, setEnglishTranslation] = useState('')
   const [dupes, setDupes] = useState([])
   const [hints, setHints] = useState([])
   const [form, setForm] = useState({
@@ -70,6 +71,7 @@ export default function NewComplaintPage() {
     let langHint = ''
     let voiceStub = false
     let transcriptionFailed = false
+    let translation = ''
 
     const st = location.state
     if (st && typeof st === 'object' && st.transcript != null && String(st.transcript).length > 0) {
@@ -77,6 +79,7 @@ export default function NewComplaintPage() {
       langHint = typeof st.lang === 'string' ? st.lang : ''
       voiceStub = !!st.voiceStub
       transcriptionFailed = !!st.transcriptionFailed
+      translation = typeof st.englishTranslation === 'string' ? st.englishTranslation : ''
     }
 
     if (!transcript) {
@@ -97,6 +100,7 @@ export default function NewComplaintPage() {
             langHint = typeof o.lang === 'string' ? o.lang : ''
             voiceStub = !!o.voiceStub
             transcriptionFailed = !!o.transcriptionFailed
+            translation = typeof o.englishTranslation === 'string' ? o.englishTranslation : ''
           }
           sessionStorage.removeItem(VOICE_DRAFT_KEY)
         }
@@ -114,6 +118,7 @@ export default function NewComplaintPage() {
         description: transcript,
         description_language: langHint && langHint.length <= 5 ? langHint : f.description_language,
       }))
+      setEnglishTranslation(translation)
       if (voiceStub) {
         setInfo(
           'Demo speech-to-text: Whisper is not installed on the backend, so the description is a placeholder. Edit it or install openai-whisper on the server for real transcripts.',
@@ -150,6 +155,7 @@ export default function NewComplaintPage() {
   }
 
   function set(k, v) {
+    if (k === 'description') setEnglishTranslation('')
     setForm((f) => ({ ...f, [k]: v }))
   }
 
@@ -170,7 +176,10 @@ export default function NewComplaintPage() {
       const r = await api('/ai/classify/', {
         method: 'POST',
         token: access,
-        body: { text: form.description, language: form.description_language },
+        body: {
+          text: englishTranslation || form.description,
+          language: englishTranslation ? 'en' : form.description_language,
+        },
       })
       setAiHint(r)
       const match = categories.find((category) => category.name === r.category)
@@ -386,6 +395,7 @@ export default function NewComplaintPage() {
       const body = {
         title: form.title.trim(),
         description: form.description.trim(),
+        english_translation: englishTranslation.trim(),
         description_language: form.description_language,
         city: form.city.trim(),
         ward: form.ward.trim(),

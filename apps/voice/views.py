@@ -57,6 +57,8 @@ class TranscribeView(APIView):
                 "job_id": str(job.id),
                 "status": job.status,
                 "transcript": result.get("transcript", ""),
+                "english_translation": result.get("english_translation", ""),
+                "translation_status": result.get("translation_status", "unavailable"),
                 "language": result.get("language", job.language),
                 "confidence": result.get("confidence"),
                 "duration_seconds": job.duration_seconds,

@@ -246,9 +246,38 @@ def _transcribe_whisper(voice_job) -> dict:
         voice_job.status = "done"
         voice_job.save(update_fields=["transcript", "language", "status"])
 
+        # Whisper's multilingual models can translate the same audio directly to
+        # English. Keep the native transcript above for the citizen, and use this
+        # separate text downstream for the English-trained classifier.
+        english_translation = transcript if voice_job.language == "en" else ""
+        translation_status = "not_needed" if voice_job.language == "en" else "unavailable"
+        if voice_job.language != "en":
+            try:
+                translate_kw = {**transcribe_kw, "task": "translate"}
+                # The transcription prompt is intentionally in the source
+                # language. Passing it to translate mode can make Whisper echo
+                # that source-language text instead of producing English.
+                translate_kw.pop("initial_prompt", None)
+                translated = _run_whisper(model, audio_path, voice_job.language, translate_kw)
+                candidate = (translated.get("text") or "").strip()
+                ascii_ratio = sum(char.isascii() for char in candidate) / max(len(candidate), 1)
+                has_english_letters = any(char.isascii() and char.isalpha() for char in candidate)
+                if candidate and ascii_ratio >= 0.7 and has_english_letters:
+                    english_translation = candidate
+                    translation_status = "translated"
+                else:
+                    logger.warning(
+                        "Whisper translation for job %s was not English-like; discarding it",
+                        voice_job.id,
+                    )
+            except Exception:
+                logger.exception("Whisper English translation failed for job %s", voice_job.id)
+
         return {
             "transcript": voice_job.transcript,
             "language": voice_job.language,
+            "english_translation": english_translation,
+            "translation_status": translation_status,
             "confidence": None,
             "stub_transcript": False,
         }
