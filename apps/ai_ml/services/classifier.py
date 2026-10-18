@@ -1,134 +1,118 @@
-"""
-Complaint text classification service.
-Uses keyword rules as default fallback; plugs in sklearn/BERT when available.
-Full ML model training in Module 6.
-"""
+"""Shared complaint classifier used by the AI API and complaint creation."""
+
 import logging
 import re
 
+from .agent1_classifier import classify_agent1
+from .agent1_config import NAGRIK_CATEGORY_MAP
+
 logger = logging.getLogger(__name__)
 
-MODEL_VERSION = "v1-rules"
-
-# Keyword-based urgency (demo / Phase-1; tone-based sentiment is future work)
-URGENCY_CRITICAL = [
-    "fire", "accident", "collapse", "electrocution", "electrocuted", "flood", "drowning",
-    "emergency", "urgent", "gas leak", "explosion", "death", "injured", "blood",
-]
-URGENCY_HIGH = [
-    "no water", "water supply", "unsafe", "theft", "robbery", "attack", "harassment",
-    "broken wire", "live wire", "open manhole", "child", "school",
-]
-
-
-def urgency_from_text(text: str) -> tuple[float, str]:
-    """
-    Returns (urgency_score 0..1, suggested priority: low|normal|high|critical).
-    """
-    if not text or not text.strip():
-        return 0.35, "normal"
-    t = text.lower()
-    if any(k in t for k in URGENCY_CRITICAL):
-        return 0.92, "critical"
-    if any(k in t for k in URGENCY_HIGH):
-        return 0.72, "high"
-    if len(t) > 200:
-        return 0.55, "normal"
-    return 0.45, "normal"
-
-
-# Simple keyword rules for immediate use (expanded in Module 6 with real ML)
-CATEGORY_KEYWORDS = {
-    "Roads & Potholes": [
-        "pothole", "road", "broken road", "sinkhole", "footpath", "sidewalk",
-        "tarmac", "asphalt", "speed breaker", "divider", "sadak", "pothole",
-    ],
-    "Water Supply": [
-        "water", "tap", "pipe", "leak", "no water", "drinking water",
-        "supply", "pipeline", "borewell", "paani",
-    ],
-    "Sanitation & Waste": [
-        "garbage", "waste", "trash", "dust bin", "sewage", "drain", "smell",
-        "dirty", "cleanliness", "toilet", "sanitation", "kachra",
-    ],
-    "Electricity": [
-        "light", "electricity", "power", "streetlight", "transformer",
-        "wire", "electric", "bijli", "blackout", "outage",
-    ],
-    "Parks & Gardens": [
-        "park", "garden", "tree", "grass", "bench", "playground", "swing",
-        "maintenance", "lawn",
-    ],
-    "Public Safety": [
-        "crime", "accident", "danger", "unsafe", "police", "theft", "fire",
-        "violence", "harassment", "security",
-    ],
-    "Noise Pollution": [
-        "noise", "loud", "sound", "music", "horn", "construction", "pollution",
-        "disturb",
-    ],
-    "Drainage & Flooding": [
-        "flood", "waterlog", "drain", "nala", "overflow", "stagnant", "puddle",
-        "barsat", "rain",
-    ],
-    "Stray Animals": [
-        "dog", "stray", "animal", "cattle", "cow", "monkey", "bite",
-        "street dog", "kutte",
-    ],
+# Extra civic categories not represented by Agent1's department/subcategory labels.
+EXTRA_CATEGORY_RULES = {
+    "Stray Animals": ("stray dog", "street dog", "stray animal", "stray cat", "dog bite", "cattle", "cow", "monkey", "animal bite", "kutte"),
+    "Public Safety": ("crime", "police", "theft", "violence", "harassment", "security", "robbery", "fire", "accident"),
+    "Noise Pollution": ("noise", "loud", "sound", "music", "horn", "disturb"),
+    "Drainage & Flooding": ("waterlog", "waterlogged", "overflow", "stagnant", "puddle", "nala", "barsat", "drain", "sewage"),
+    "Sanitation & Waste": ("garbage", "waste", "trash", "dust bin", "dirty", "cleanliness", "kachra"),
+    "Parks & Gardens": ("park", "garden", "tree", "grass", "bench", "playground", "swing", "lawn"),
 }
 
 
+def _extra_category(text: str) -> str | None:
+    lowered = (text or "").lower()
+    matches = {
+        category: sum(
+            1 for term in terms
+            if re.search(rf"(?<!\w){re.escape(term)}(?!\w)", lowered)
+        )
+        for category, terms in EXTRA_CATEGORY_RULES.items()
+    }
+    matches = {category: score for category, score in matches.items() if score}
+    return max(matches, key=matches.get) if matches else None
+
+
 def classify_text(text: str, language: str = "en") -> dict:
-    """
-    Classify complaint text into a category.
-    Returns: { "category": str, "confidence": float, "all_scores": dict, "model_version": str }
+    """Return the shared Agent1 classification and sentiment response.
+
+    Naive Bayes supplies department/issue predictions for the API, the Agent1 panel,
+    and automatic category assignment during complaint creation. High-precision
+    department rules remain visible in ``classification_source``. Extra civic
+    categories outside the Agent1 training taxonomy use their own explicit rules.
     """
     try:
-        return _rule_based_classify(text)
+        classification_text = text
+        lang = (language or "en").strip().lower()
+        ascii_ratio = sum(1 for char in (text or "") if ord(char) < 128) / max(len(text or ""), 1)
+        translation_status = (
+            "not_needed" if lang in {"en", "english"} or ascii_ratio > 0.85 else "unavailable"
+        )
+        if translation_status == "unavailable":
+            try:
+                from django.conf import settings
+
+                if getattr(settings, "GROQ_API_KEY", ""):
+                    from .agent1_translator import translate_to_english
+
+                    translated = translate_to_english(text, language)
+                    if translated and translated.strip() and translated.strip() != text.strip():
+                        classification_text = translated
+                        translation_status = "translated"
+            except Exception as exc:
+                logger.warning("Complaint translation unavailable for classification: %s", exc)
+
+        result = classify_agent1(classification_text)
+        category = NAGRIK_CATEGORY_MAP.get(result["department"], "Other")
+        extra = _extra_category(text)
+        if extra:
+            category = extra
+            source = "category_rules"
+            confidence = result["confidence"]
+            all_scores = {extra: round(float(confidence), 4)}
+            # Keep the Agent1 route visible for diagnostics/department routing;
+            # the civic category is an additional portal-facing override.
+            department = result["department"]
+            subcategory = result["subcategory"]
+        else:
+            source = result["classification_source"]
+            confidence = result["confidence"]
+            department = result["department"]
+            subcategory = result["subcategory"]
+            all_scores = {}
+            for department_label, score in result["department_scores"].items():
+                mapped = NAGRIK_CATEGORY_MAP.get(department_label, "Other")
+                all_scores[mapped] = round(all_scores.get(mapped, 0.0) + score, 4)
+            if not all_scores:
+                all_scores = {category: confidence}
+
+        priority = result["priority"].lower()
+        return {
+            "category": category,
+            "department": department,
+            "subcategory": subcategory,
+            "confidence": round(float(confidence), 4),
+            "all_scores": all_scores,
+            "model_version": result["model_version"],
+            "classification_source": source,
+            "translation_status": translation_status,
+            "sentiment_polarity": result["sentiment_polarity"],
+            "sentiment_method": result["sentiment_method"],
+            "urgency_score": result["urgency_score"],
+            "suggested_priority": priority,
+        }
     except Exception as exc:
-        logger.exception("Classification failed: %s", exc)
-        u_score, u_pri = urgency_from_text(text or "")
+        logger.exception("Agent1 classification failed; using Other fallback: %s", exc)
         return {
             "category": "Other",
+            "department": "Other",
+            "subcategory": "Other",
             "confidence": 0.0,
             "all_scores": {},
-            "model_version": MODEL_VERSION,
-            "urgency_score": u_score,
-            "suggested_priority": u_pri,
+            "model_version": "agent1-error-fallback",
+            "classification_source": "error_fallback",
+            "translation_status": "unavailable",
+            "sentiment_polarity": 0.0,
+            "sentiment_method": "unavailable",
+            "urgency_score": 0.35,
+            "suggested_priority": "normal",
         }
-
-
-def _rule_based_classify(text: str) -> dict:
-    text_lower = text.lower()
-    scores: dict[str, int] = {}
-
-    for category, keywords in CATEGORY_KEYWORDS.items():
-        count = sum(1 for kw in keywords if kw in text_lower)
-        if count:
-            scores[category] = count
-
-    if not scores:
-        u_score, u_pri = urgency_from_text(text)
-        return {
-            "category": "Other",
-            "confidence": 0.5,
-            "all_scores": {"Other": 1.0},
-            "model_version": MODEL_VERSION,
-            "urgency_score": u_score,
-            "suggested_priority": u_pri,
-        }
-
-    total = sum(scores.values())
-    normalized = {cat: round(cnt / total, 3) for cat, cnt in scores.items()}
-    best_category = max(scores, key=scores.get)
-    confidence = normalized[best_category]
-    u_score, u_pri = urgency_from_text(text)
-
-    return {
-        "category": best_category,
-        "confidence": confidence,
-        "all_scores": normalized,
-        "model_version": MODEL_VERSION,
-        "urgency_score": u_score,
-        "suggested_priority": u_pri,
-    }

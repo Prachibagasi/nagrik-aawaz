@@ -173,7 +173,12 @@ export default function NewComplaintPage() {
         body: { text: form.description, language: form.description_language },
       })
       setAiHint(r)
-      setInfo('AI suggestion ready below.')
+      const match = categories.find((category) => category.name === r.category)
+      if (match) setForm((f) => ({ ...f, category_id: String(match.id) }))
+      const languageNote = r.translation_status === 'unavailable'
+        ? ' Translation is not configured, so non-English text may be classified less accurately.'
+        : ''
+      setInfo(`Suggested category: ${r.category}. Review it below or choose another category.${languageNote}`)
     } catch (e) {
       setError(formatActionError(e))
     } finally {
@@ -359,9 +364,13 @@ export default function NewComplaintPage() {
     }
     setAiHint({
       category: data.nagrik_category || data.department,
-      confidence: 0.9,
-      urgency_score: data.priority === 'High' ? 0.85 : data.priority === 'Medium' ? 0.55 : 0.35,
+      confidence: data.classification?.confidence ?? 0,
+      urgency_score: data.classification?.urgency_score ?? 0.35,
       suggested_priority: data.priority?.toLowerCase(),
+      department: data.department,
+      subcategory: data.subcategory,
+      classification_source: data.classification?.classification_source || 'agent1',
+      sentiment_polarity: data.classification?.sentiment_polarity,
       agent1: true,
     })
   }
@@ -524,13 +533,17 @@ export default function NewComplaintPage() {
         ) : null}
         {aiHint ? (
           <p className="muted" style={{ marginBottom: 14 }}>
-            AI: <strong style={{ color: 'var(--text-primary)' }}>{aiHint.category}</strong> (
-            {(Number(aiHint.confidence) * 100).toFixed(0)}%){' '}
+            AI: <strong style={{ color: 'var(--text-primary)' }}>{aiHint.category}</strong>
+            {aiHint.department ? ` · ${aiHint.department}` : ''}
+            {aiHint.subcategory ? ` / ${aiHint.subcategory}` : ''}
+            {` · ${aiHint.classification_source || 'classifier'} · score ${(Number(aiHint.confidence) * 100).toFixed(0)}%`}{' '}
             {aiHint.urgency_score != null ? (
               <>
-                · Urgency score: <strong>{Number(aiHint.urgency_score).toFixed(2)}</strong>
+                · Priority: <strong>{aiHint.suggested_priority || 'normal'}</strong>
+                {' '}· Urgency: <strong>{Number(aiHint.urgency_score).toFixed(2)}</strong>
               </>
             ) : null}
+            {aiHint.sentiment_polarity != null ? ` · TextBlob polarity: ${Number(aiHint.sentiment_polarity).toFixed(2)}` : ''}
           </p>
         ) : null}
         {dupes.length > 0 ? (

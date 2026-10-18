@@ -42,7 +42,7 @@ NAGRIK_CATEGORY_MAP = {
     "Electricity": "Electricity",
     "Water": "Water Supply",
     "PWD": "Roads & Potholes",
-    "Education": "Other",
+    "Education": "Education",
     "Other": "Other",
 }
 
@@ -97,6 +97,7 @@ EDUCATION_CATEGORY_MAP = {
     "Admission Problem": "Admission Problem",
     "Text Book / Material Unavailability": "Text Book / Material Unavailability",
     "Digital Device / Internet Connectivity": "Digital Device / Internet Connectivity",
+    "Digital Device / Internet Issue": "Digital Device / Internet Connectivity",
     "Teacher Misconduct": "Teacher Misconduct",
     "RTI Related": "RTI Related",
 }
@@ -177,7 +178,7 @@ def build_form_payload(
 
     dept = department or "Other"
     if dept == "Electricity":
-        cat = BIJLI_TYPE_MAP.get(subcategory, "Other")
+        cat = BIJLI_TYPE_MAP.get(subcategory, subcategory if subcategory in BIJLI_TYPE_MAP.values() else "Other")
         return {
             "portal_key": "bijli",
             "name": complainant_name,
@@ -191,7 +192,7 @@ def build_form_payload(
             "nagrik_complaint_id": complaint_id,
         }
     if dept == "Water":
-        cat = JAL_TYPE_MAP.get(subcategory, "Other Request")
+        cat = JAL_TYPE_MAP.get(subcategory, subcategory if subcategory in JAL_TYPE_MAP.values() else "Other Request")
         return {
             "portal_key": "jal",
             "accountNo": "N/A",
@@ -204,7 +205,7 @@ def build_form_payload(
             "nagrik_complaint_id": complaint_id,
         }
     if dept == "Education":
-        cat = EDUCATION_CATEGORY_MAP.get(subcategory, "Other")
+        cat = EDUCATION_CATEGORY_MAP.get(subcategory, subcategory if subcategory in EDUCATION_CATEGORY_MAP.values() else "Other")
         return {
             "portal_key": "shiksha",
             "name": complainant_name,
@@ -217,7 +218,7 @@ def build_form_payload(
             "nagrik_complaint_id": complaint_id,
         }
     # PWD + Other default
-    cat = PWD_CATEGORY_MAP.get(subcategory, "Other")
+    cat = PWD_CATEGORY_MAP.get(subcategory, subcategory if subcategory in PWD_CATEGORY_MAP.values() else "Other")
     return {
         "portal_key": "pwd",
         "name": complainant_name,

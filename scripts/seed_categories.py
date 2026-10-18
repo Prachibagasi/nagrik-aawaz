@@ -26,6 +26,7 @@ CATEGORIES = [
     {"name": "Drainage & Flooding",    "slug": "drainage-flooding",  "icon": "🌊", "default_sla_days": 3,  "sort_order": 8},
     {"name": "Stray Animals",          "slug": "stray-animals",      "icon": "🐕", "default_sla_days": 5,  "sort_order": 9},
     {"name": "Other",                  "slug": "other",              "icon": "📋", "default_sla_days": 7,  "sort_order": 10},
+    {"name": "Education",              "slug": "education",          "icon": "🎓", "default_sla_days": 7,  "sort_order": 11},
 ]
 
 created = 0
