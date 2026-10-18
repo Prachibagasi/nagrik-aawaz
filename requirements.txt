@@ -1,2 +1,8 @@
-# Convenience pointer — use requirements/development.txt for full client install.
--r requirements/development.txt
+numpy==1.26.1
+scikit-learn==1.3.1
+matplotlib==3.8.0
+networkx==3.2.1
+ollama==0.4.7
+streamlit==1.27.2
+pandas==2.1.1
+pymupdf==1.23.22 
