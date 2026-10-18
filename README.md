@@ -6,6 +6,15 @@ A Django REST API powers authentication, complaint workflows, AI-assisted triage
 
 This was built as a **4th-year group major project**. It's shared here to showcase the work — some parts are still being refined (see [Project Status](#project-status)).
 
+## Images
+![Description of image](images/landing.png)
+![Description of image](images/landing2.png)
+![Description of image](images/register.png)
+![Description of image](images/dashboard.png)
+![Description of image](images/ticket.png)
+![Description of image](images/track_complaint.png)
+![Description of image](images/FAQ.png)
+
 ## Features
 
 - **Phone + OTP authentication** with JWT sessions (citizen, field officer, and admin roles)
