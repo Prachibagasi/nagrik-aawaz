@@ -1,282 +1,172 @@
-# Praxiator
+# Nagrik Aawaz (नागरिक आवाज़)
 
-**A Multi-Agent AI Recruitment Intelligence System**
+**Nagrik Aawaz** ("Citizen's Voice") is a civic complaint-management platform that lets citizens report public-service issues — electricity, water, roads/PWD, education, and more — by text or voice, in multiple Indian languages, and track them through to resolution.
 
-![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
-![Streamlit](https://img.shields.io/badge/UI-Streamlit-ff4b4b.svg)
-![Ollama](https://img.shields.io/badge/embeddings-Ollama-black.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+A Django REST API powers authentication, complaint workflows, AI-assisted triage, and notifications; a React (Vite) single-page app is the primary citizen-facing client. The repo also includes standalone department micro-sites and an experimental complaint-drafting agent.
 
-Praxiator automates first-round resume screening. It parses job descriptions and PDF resumes, scores every candidate against every role using semantic embeddings, shortlists the best matches, and drafts personalized interview invitations. Everything runs locally with Ollama, so no API keys and no candidate data leaving your machine.
+This was built as a **4th-year group major project**. It's shared here to showcase the work — some parts are still being refined (see [Project Status](#project-status)).
 
-Built for a GenAI hackathon.
+## Images
+![Landing_page](images/landing.png)
+![Landing_page](images/landing2.png)
+![Registration](images/register.png)
+![Dashboard](images/dashboard.png)
+![Ticket](images/ticket.png)
+![Track](images/track_complaint.png)
+![FAQ](images/FAQ.png)
 
-<!-- Add a screenshot of the Streamlit dashboard here: ![Dashboard](docs/dashboard.png) -->
+## Features
 
-## Table of Contents
+- **Phone + OTP authentication** with JWT sessions (citizen, field officer, and admin roles)
+- **Complaint lifecycle** — submit, track (via a human-readable tracking ID), assign, resolve, close — with status, priority, SLA due dates, and geolocation
+- **Voice complaints** — record in Hindi, English, Tamil, or Marathi; transcribed with OpenAI Whisper and auto-translated
+- **AI triage (Agent1)** — rule-based/ML category classification, urgency scoring, and optional LLM-drafted formal complaint text (via Groq)
+- **Phase 2 intelligence** — near-duplicate clustering, sentiment scoring, community verification counts, and auto-assignment
+- **Notifications** — SMS (Twilio) and push (Firebase Cloud Messaging) delivery on status changes
+- **Department portals** — standalone HTML/CSS/JS complaint mini-sites for Bijli Vibhag (electricity), Jal Vibhag (water), Shiksha Vibhag (education), and PWD
+- **IVR stub** — inbound endpoint for phone-based complaint intake
 
-- [Overview](#overview)
-- [Architecture](#architecture)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Sample Results](#sample-results)
-- [Database Schema](#database-schema)
-- [Testing](#testing)
-- [Troubleshooting](#troubleshooting)
-- [Limitations & Future Work](#limitations--future-work)
-- [License](#license)
+## Tech Stack
 
-## Overview
-
-Manual resume screening is slow and inconsistent. Praxiator splits the workflow into five single-purpose agents that hand data to each other in a pipeline, with every step persisted to SQLite so runs are inspectable afterward.
-
-| Agent | File | Responsibility |
-|---|---|---|
-| JD Summarizer | `agents/jd_summarizer.py` | Loads job descriptions from CSV and extracts required skills, experience, education, certifications, and responsibilities |
-| CV Extractor | `agents/cv_extractor.py` | Reads PDF resumes with PyMuPDF and extracts name, email, phone, education, experience, skills, certifications, and tech stack |
-| Matcher | `agents/matcher.py` | Embeds each JD and CV with `nomic-embed-text` and scores them by cosine similarity (0 to 100) |
-| Shortlister | `agents/shortlister.py` | Keeps candidates at or above a configurable score threshold (default 80) |
-| Interview Scheduler | `agents/emailer.py` | Generates personalized invitation emails that highlight skills matching the job, and sends them via SMTP or simulates sending |
-
-You can drive the pipeline from the command line (`main.py`) or from a Streamlit dashboard (`app.py`).
-
-## Architecture
-
-```mermaid
-graph TD
-    A[JD Summarizer Agent] -->|JD summaries| C[Matching Agent]
-    B[CV Extractor Agent] -->|Parsed CVs| C
-    C -->|Match scores| D[Shortlisting Agent]
-    D -->|Shortlisted candidates| E[Interview Scheduler Agent]
-    A & B & C & D -.->|persist| DB[(SQLite memory.db)]
-
-    classDef agent fill:#f9f,stroke:#333,stroke-width:2px;
-    class A,B,C,D,E agent;
-```
-
-**How a run works**
-
-1. The JD Summarizer reads `job_description.csv` and produces a structured summary per role.
-2. The CV Extractor parses every PDF in `resumes/`.
-3. The Matcher builds a text representation of each JD and CV, embeds both through Ollama, and computes cosine similarity for every JD and CV pair.
-4. The Shortlister filters each role's ranked list by the threshold.
-5. The Interview Scheduler writes a personalized email per shortlisted candidate. It is simulated unless real sending is enabled (see [Configuration](#configuration)).
-6. All results are stored in SQLite, and an agent diagram is generated.
+| Layer | Technology |
+|---|---|
+| Backend | Django 5, Django REST Framework, SimpleJWT, django-filter |
+| Database | SQLite (dev) / PostgreSQL (prod, via `psycopg`) |
+| AI / ML | scikit-learn, pandas, TextBlob, Groq LLM API |
+| Voice | OpenAI Whisper, FFmpeg (via `imageio-ffmpeg`) |
+| Frontend | React 19, Vite, React Router |
+| Notifications | Twilio (SMS), Firebase (push) |
+| Testing | pytest, pytest-django, factory-boy |
 
 ## Project Structure
 
 ```
-.
-├── main.py                  # CLI entry point: runs the full pipeline
-├── app.py                   # Streamlit dashboard
-├── demo.py                  # Lightweight demo with mock processing (no Ollama needed)
-├── agents/
-│   ├── jd_summarizer.py     # Job description parsing
-│   ├── cv_extractor.py      # PDF resume extraction
-│   ├── matcher.py           # Embedding-based matching
-│   ├── shortlister.py       # Threshold-based shortlisting
-│   └── emailer.py           # Email generation and sending
-├── utils/
-│   ├── embeddings.py        # Cached Ollama embeddings + cosine similarity
-│   ├── skills.py            # Shared technology vocabulary
-│   ├── parser.py            # Text parsing helpers
-│   └── diagram.py           # Mermaid / matplotlib diagram generator
-├── db/
-│   └── memory.py            # Thread-safe SQLite persistence layer
-├── resumes/                 # 200 synthetic sample resumes (PDF)
-├── job_description.csv      # 20 sample job descriptions
-├── tests/                   # pytest suite (Ollama is mocked, so it runs anywhere)
-├── scripts/
-│   └── check_ollama_chat.py # Manual check that a local chat model responds
-├── .github/workflows/       # CI: runs the tests on every push
-├── agent_diagram.md / .png  # Generated agent interaction diagrams
-├── SUMMARY.md               # Project summary
-└── requirements.txt
+apps/
+  accounts/       Auth, users, OTP verification
+  complaints/     Complaint model, workflow, Phase 2 intelligence
+  voice/          Voice upload + Whisper transcription
+  ai_ml/          Agent1 classification, translation, LLM drafting
+  departments/    Department metadata & file storage
+  notifications/  SMS / push delivery
+  core/           Shared middleware, permissions, health check
+config/           Django settings (base / development / production), URLs
+src/              React frontend (pages, components, API client, context)
+complaint_agent/  Standalone experimental complaint-drafting script
+Bijli_vibhag/     Electricity department complaint mini-site
+jal vibhag/       Water department complaint mini-site
+shiksha_vibhag/   Education department complaint mini-site
+pwd/              Public Works Department complaint mini-site
+tests/            Backend test suite (pytest)
 ```
+
+## Project Status
+
+This project was built as a college major project and is under active improvement. Core flows (auth, complaint submission, voice-to-text, classification) work end-to-end, but some edge cases and integrations are still being hardened. Known areas of ongoing work:
+
+- Classifier accuracy on mixed-language / code-switched text (Hinglish, transliterated regional languages)
+- Broader training data for the Naive Bayes model beyond the current seed categories
+- Error handling around the Whisper/Groq fallback paths when API keys are unset
+
+Contributions, issues, and suggestions are welcome.
+
+## My Contribution — Text Classification (Agent1)
+
+I was responsible for the **text classification pipeline** that takes a citizen's complaint (typed or transcribed from voice) and automatically routes it to the correct department and issue sub-category, so it reaches the right authority without manual sorting.
+
+**What it does** (`apps/ai_ml/services/`):
+
+- **Speech-to-text**: Voice complaints are transcribed using **OpenAI Whisper** (`stt_whisper.py`), with language hints for Hindi, Tamil, Marathi, and other Indian languages, and FFmpeg-based audio preprocessing so it works without a system FFmpeg install.
+- **Translation & drafting via Groq**: Non-English/mixed-language complaint text is translated to English through the **Groq LLM API** (`agent1_translator.py`), and a formal, government-style complaint letter is optionally drafted from the citizen's raw text (`agent1_draft.py`), with a deterministic template as a fallback whenever no `GROQ_API_KEY` is configured.
+- **Category & sub-category classification**: The translated text is vectorized with **TF-IDF** and classified using **Multinomial Naive Bayes** (`agent1_classifier.py`) into a department (Electricity, Water, PWD, Education, …) and a specific sub-category (e.g. "Voltage Issue", "Pipe Leakage / Burst", "Road Pothole"). A keyword-based rule layer runs alongside the ML model to catch clear cases and keep sub-categories consistent with their parent department.
+- **Priority scoring**: A lightweight urgency heuristic (keyword triggers + sentiment polarity via TextBlob) tags each complaint as Low/Medium/High priority.
+- **Training data & routing config**: `training_data.py` and `agent1_config.py` define the category/sub-category taxonomy per department and the authority each category is routed to.
+
+**Status**: The rule-based routing and Naive Bayes classifier are functional and integrated into the complaint submission flow. I'm actively working on improving classification accuracy for mixed-language input and expanding the training dataset — this is shared now to have something concrete to demo while that work continues.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Python 3.10+
-- [Ollama](https://ollama.ai/) installed **and running** locally
+- Python 3.10+ (3.11–3.13 recommended)
+- Node.js 18+ and npm
+- FFmpeg is bundled via `imageio-ffmpeg`, so no separate system install is needed for voice transcription
 
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Prachibagasi/Praxiator-A-Multi-Agent-AI-Recruitment-Intelligence-System.git
-   cd Praxiator-A-Multi-Agent-AI-Recruitment-Intelligence-System
-   ```
-
-2. Create and activate a virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # On Windows: venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Pull the models:
-   ```bash
-   ollama pull nomic-embed-text   # embeddings (required)
-   ollama pull llama3             # structured JD extraction (optional; rules are used without it)
-   ```
-
-5. Confirm Ollama is running and the models are available:
-   ```bash
-   ollama list
-   ```
-
-## Usage
-
-### Run the full pipeline (CLI)
+### Backend setup
 
 ```bash
-python main.py
+# from the project root
+python -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+
+pip install -r requirements.txt # installs requirements/development.txt
+
+# create a .env file in the project root with at least:
+#   SECRET_KEY=your-secret-key
+# (see Environment Variables below for optional settings)
+
+python manage.py migrate
+python scripts/seed_categories.py   # seed complaint categories
+python manage.py createsuperuser
+python manage.py runserver          # http://127.0.0.1:8000
 ```
 
-With options:
+### Frontend setup
 
 ```bash
-python main.py --jd-file path/to/jds.csv --resumes-dir path/to/resumes --threshold 85 --send-emails
+npm install
+cp .env.example .env.local
+npm run dev                          # http://127.0.0.1:5173
 ```
 
-| Argument | Default | Description |
-|---|---|---|
-| `--jd-file` | `job_description.csv` | Path to the job descriptions CSV |
-| `--resumes-dir` | `resumes` | Directory containing resume PDFs |
-| `--db-file` | `memory.db` | SQLite database path |
-| `--threshold` | `80.0` | Minimum match score (0 to 100) for shortlisting |
-| `--send-emails` | off | Run the Interview Scheduler step (simulated unless `--live`) |
-| `--live` | off | Actually send emails via SMTP; requires `--send-emails` and the SMTP variables below |
-| `--top-n` | none | Shortlist at most N candidates per job (the best scores above the threshold) |
-| `--skill-weight` | `0.0` | 0 to 1: share of the score from explicit technology overlap between JD and CV. `0` = embeddings only |
-| `--diagram-type` | `mermaid` | Diagram output: `mermaid` or `matplotlib` |
+`npm run dev` proxies `/api` requests to `http://127.0.0.1:8000`. Set `VITE_BACKEND_URL` in `.env.local` if your backend runs elsewhere.
 
-Emails are only sent when you pass `--live`. In live mode the shortlist table records `email_sent` and the date for each candidate. If Ollama isn't reachable, the run stops immediately with a clear message and writes nothing.
+### Department demo portals
 
-### Launch the dashboard
+In a third terminal, serve the standalone department sites used by Agent1's **Open department portal** action:
 
-```bash
-streamlit run app.py
+```powershell
+python scripts/serve_department_portals.py  # http://127.0.0.1:5500
 ```
 
-| Page | What it does |
-|---|---|
-| Home | Overview and one-click full pipeline run |
-| Job Descriptions | Process and inspect parsed job descriptions |
-| Resumes | Process and inspect extracted resume data |
-| Matching | Run matching and view scores |
-| Shortlisting | View shortlisted candidates (threshold slider: 50 to 100) |
-| Emails | Preview, simulate, or send interview invitations |
-| Database | Browse the SQLite tables |
-| About | Architecture and technical details |
+This server binds to localhost and serves only the four department-site folders. The Nagrik Aawaz API's **Submit to department API** action uses Django directly and does not depend on this static server.
 
-The sidebar lets you change the database file, JD file, resumes directory, match threshold, and whether emails are simulated.
-
-### Try it without Ollama
-
-`demo.py` simulates the full flow with mock processing, which is useful for a quick walkthrough:
+### Running tests
 
 ```bash
-python demo.py
-```
-
-## Configuration
-
-Email sending is **simulated by default**. To send real emails, set your SMTP details as environment variables, then use `--live` on the CLI or uncheck **Simulate emails** in the dashboard sidebar. Live mode refuses to start if the credentials are missing:
-
-```bash
-export SMTP_SERVER=smtp.gmail.com     # default
-export SMTP_PORT=587                  # default
-export SENDER_EMAIL=you@example.com
-export EMAIL_PASSWORD=your-app-password
-```
-
-Optional model settings:
-
-```bash
-export OLLAMA_EMBED_MODEL=nomic-embed-text   # embedding model (default)
-export OLLAMA_CHAT_MODEL=llama3              # model for JD extraction (default)
-export EMBEDDING_CACHE=embedding_cache.db    # on-disk embedding cache; set to "" to disable
-```
-
-For Gmail, use an [app password](https://support.google.com/accounts/answer/185833), not your account password. Credentials are read from the environment only, so never commit them. The repo's `.gitignore` already excludes `.env` files.
-
-## Sample Results
-
-From an earlier run over the bundled data (20 job descriptions × 200 resumes = 4,000 scored pairs, embeddings only). Re-run the pipeline to refresh these after pulling the latest changes:
-
-| Metric | Value |
-|---|---|
-| Score range | 59.6 to 83.3 |
-| Mean score | 69.5 |
-| Pairs at or above the 80 threshold | 28 (0.7%) |
-
-Embedding similarity scores cluster in a narrow band, so the threshold has a large effect on how many candidates are shortlisted. Tune `--threshold` (or the dashboard slider) to your data rather than treating 80 as meaningful on its own.
-
-## Database Schema
-
-Persistence lives in `db/memory.py` (SQLite, one connection per thread):
-
-| Table | Stores |
-|---|---|
-| `jd_summaries` | Parsed job descriptions |
-| `cv_data` | Extracted resume data |
-| `match_scores` | Score for each JD and CV pair |
-| `shortlist` | Shortlisted candidates and email status |
-
-## Testing
-
-```bash
-pip install -r requirements-dev.txt
 pytest
 ```
 
-The suite mocks Ollama, so it needs no running services. It covers resume parsing (including all 200 bundled resumes), embedding caching and failure handling, matching and the hybrid score, shortlisting, email generation and SMTP sending, database upserts and thread safety, and full end-to-end CLI runs. GitHub Actions runs it on every push.
+## Environment Variables
 
-`scripts/check_ollama_chat.py` is a manual check that a local chat model responds.
+Backend (`.env` in project root):
 
-## Troubleshooting
+| Variable | Required | Default | Purpose |
+|---|---|---|---|
+| `SECRET_KEY` | Yes | — | Django secret key |
+| `ALLOWED_HOSTS` | No | `localhost,127.0.0.1` | Comma-separated allowed hosts |
+| `STT_PROVIDER` | No | `whisper` | Speech-to-text provider (`whisper` / `google`) |
+| `WHISPER_MODEL_SIZE` | No | `small` | Whisper model size (downloads ~500 MB on first use) |
+| `GROQ_API_KEY` | No | — | Enables LLM-drafted complaint text (falls back to templates if unset) |
+| `SMS_PROVIDER` / `TWILIO_*` | No | — | SMS OTP delivery (dev mode returns OTP in the API response instead) |
+| `FIREBASE_CREDENTIALS_PATH` | No | — | Push notification delivery |
+| `GOOGLE_MAPS_API_KEY` | No | — | Location features |
+| `DEPARTMENT_PORTAL_BASE` | No | `http://127.0.0.1:5500` | Base URL for Agent1's standalone portal links |
+| `DEPARTMENT_DATA_DIR` | No | — | JSON storage path for demo department API data; use `backend/data` in this repository |
+| `DB_NAME` / `DB_USER` / `DB_PASSWORD` / `DB_HOST` / `DB_PORT` | Production only | — | PostgreSQL connection (dev uses SQLite automatically) |
+| `USE_S3` / `AWS_*` | No | `False` | S3-backed media storage |
 
-**"Could not get an embedding from Ollama".** Ollama isn't running or the embedding model isn't pulled. Start Ollama and run `ollama pull nomic-embed-text`. The pipeline stops instead of producing scores from missing data.
+Frontend (`.env.local`, copy from `.env.example`):
 
-**"LLM extraction unavailable".** The chat model for JD parsing isn't installed. Run `ollama pull llama3` or set `OLLAMA_CHAT_MODEL`. Rule-based extraction is used in the meantime.
+| Variable | Purpose |
+|---|---|
+| `VITE_BACKEND_URL` | Backend origin used by the dev proxy |
+| `VITE_API_BASE_URL` | Full API base URL (only needed when not using the dev proxy) |
+| `VITE_MARKETING_URL` | Link to the marketing site, if run separately |
 
-**First run is slow, later runs are fast.** Each unique JD and resume is embedded once and cached in `embedding_cache.db`. Delete that file to force re-embedding (for example after switching embedding models, which is cached separately anyway).
+## Supported Languages
 
-**"no extractable text" warning for a resume.** It's probably a scanned PDF. Install [Tesseract](https://github.com/tesseract-ocr/tesseract) and PyMuPDF will use OCR automatically.
-
-**A resume shows `Unknown` as the name.** The parser looks for a `Name:` line, then for a name-like line near the top. Unusual layouts may need a tweak in `_extract_name`.
-
-## Limitations & Future Work
-
-- **Scores are a ranking signal, not a verdict.** Embedding similarity measures topical closeness, not qualification, and scores cluster in a narrow band. Use `--top-n` for relative cut-offs, `--skill-weight` to blend in explicit technology overlap (re-tune the threshold afterwards, since blended scores sit on a different scale), and keep a human in the loop.
-- **Resume parsing is rule-based.** It handles standard headings (`Education`, `Work Experience`, `Skills`, ...) and falls back to looser patterns, but heavily designed resumes may parse poorly. Scanned PDFs need Tesseract for OCR (untested on the bundled data, which is all text-based).
-- **JD extraction needs a pulled chat model** (default `llama3`); otherwise it uses regex rules.
-- **PDF only.** DOCX resumes are not supported yet.
-
-Ideas for next steps:
-
-- DOCX resume support
-- Evaluate scoring against labeled hiring outcomes instead of treating similarity as truth
-- Configurable weights for skills vs. experience vs. education
-- Integration with applicant tracking systems
-
-## Data & Privacy
-
-The bundled resumes in `resumes/` are synthetic samples. Do not commit real candidate resumes or a populated database to a public repository, since resumes contain personal data.
+Voice input and complaint text currently support **Hindi, English, Tamil, and Marathi**.
 
 ## License
 
-Released under the MIT License.
-
-## Author
-
-**Prachi Bagasi** · [@Prachibagasi](https://github.com/Prachibagasi)
+No license file is currently included in this repository.
