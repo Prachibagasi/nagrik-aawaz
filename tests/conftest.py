@@ -5,11 +5,18 @@ from pathlib import Path
 
 import numpy as np
 import pytest
+from rest_framework_simplejwt.tokens import RefreshToken
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from utils.embeddings import EmbeddingUtil  # noqa: E402
+
+
+def bearer(user):
+    """Build an authenticated request header for civic API tests."""
+    token = RefreshToken.for_user(user)
+    return {"HTTP_AUTHORIZATION": f"Bearer {token.access_token}"}
 
 
 @pytest.fixture(autouse=True)
